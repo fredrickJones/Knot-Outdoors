@@ -6,7 +6,8 @@ var Express = require('express'),
 	InstagramStrategy = require('passport-instagram').Strategy,
 	TwitterStrategy = require('passport-twitter').Strategy,
 	BodyParser = require('body-parser'),
-	Request = require('request');
+	Cors = require('cors'),
+	Request = require('request');	// <--Don't know if I need this
 
 var env = require('./serverAssets/env');
 
