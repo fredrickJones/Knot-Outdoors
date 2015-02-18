@@ -1,1 +1,3 @@
-loginCtrl.js
+'use strict';
+var app = angular.module('knotOutdoors');
+

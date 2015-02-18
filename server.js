@@ -21,7 +21,7 @@ var mongoURI = 'localhost/outdoors';
 // middleware
 app.use(Express.static(__dirname + '/public'));
 app.use(BodyParser.json());
-app.use(Session({secret: 'AGEGIEO38423dknoiwhud983u3Efhe83bf3RsG'}));
+app.use(Session({secret: 'AGEGIEO38423dknoiwhud983u3Efhe83bf3RsG', saveUninitialized: true, resave: true}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 

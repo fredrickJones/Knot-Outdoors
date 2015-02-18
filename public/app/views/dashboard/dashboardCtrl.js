@@ -103,6 +103,5 @@ app.directive('exampleDirective', function() {
 		templateUrl: 'example-directive.html'
 	};
 });
-})();
 
 
