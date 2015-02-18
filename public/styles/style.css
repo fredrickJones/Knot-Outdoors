@@ -1,2 +1,40 @@
-* { outline: 1px solid red; }
+/** { outline: 1px solid red; }*/
 
+body {
+	width: 100%;
+}
+
+.main-container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+/*.header {
+	position: inherit;
+}*/
+
+.header .main-logo.img-responsive {
+	width: 5%;
+	/*position: fixed;
+	top: 2%;
+	left: 2%;*/
+}
+
+/*.header h1 {
+	text-align: right;
+	width: 15%;
+	margin: 20px 20px 10px 0;
+	float: right;
+}*/
+
+/* Extra small devices (phones, less than 768px) */
+ /*No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+/*@media (min-width: @screen-sm-min) { ... }
+*/
+/* Medium devices (desktops, 992px and up) */
+/*@media (min-width: @screen-md-min) { ... }
+*/
+/* Large devices (large desktops, 1200px and up) */
+/*@media (min-width: @screen-lg-min) { ... }*/

@@ -3,16 +3,12 @@ var app = angular.module('knotOutdoors', ['ngRoute']);
 
 app.config(function($routeProvider) {
 	$routeProvider
-		// .when('/', {
-		// 	temlateUrl: '../../index.html',
-		// 	controller: 'mainCtrl'
-		// })
-		when('/', {
-			temlateUrl: '../views/rockClimbing/rockView.html',
-			controller: 'rockCtrl'
+		.when('/', {
+			templateUrl: '../../index.html',
+			controller: 'mainCtrl'
 		})
 		.when('/login', {
-			temlateUrl: '../views/login/loginView.html',
+			templateUrl: '../views/login/loginView.html',
 			controller: 'loginCtrl',
 			resolve: {
 				oAuth: function(loginService) {
@@ -21,13 +17,17 @@ app.config(function($routeProvider) {
 			}
 		})
 		.when('/dashboard', {
-			temlateUrl: '../views/dashboard/dashboardView.html',
+			templateUrl: '../views/dashboard/dashboardView.html',
 			controller: 'dashboardCtrl',
 			resolve: {
 				user: function(userService, $route) {
 					return userService.get($route.current.params.id);
 				}
 			}
+		})
+		.when('/rock-climbing', {
+			templateUrl: '/views/rockClimbing/rockView.html',
+			controller: 'rockCtrl'
 		})
 		// .when('/camping', {
 		// 	temlateUrl: '/temlate/camping.html',
@@ -40,10 +40,6 @@ app.config(function($routeProvider) {
 		// .when('/fishing', {
 		// 	temlateUrl: '/temlate/fishing.html',
 		// 	controller: 'fishingCtrl'
-		// })
-		// .when('/rock-climbing', {
-		// 	temlateUrl: '/temlate/rock.html',
-		// 	controller: 'rockCtrl'
 		// })
 		.otherwise({
 			redirectTo: '/'
