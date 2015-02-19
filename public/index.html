@@ -28,7 +28,7 @@
 
 			<nav role="navigation" class="nav-bar navbar-default">
 				<ul class="nav nav-pills">
-					<li role="presentation"><a href="/#/rock-climbing">Rock Climbing</a></li>
+					<!-- <li role="presentation"><a href="/#/rock-climbing">Rock Climbing</a></li> -->
 					<li role="presentation"><a href="/#/login">Login</a></li>
 				</ul>
 			</nav>
@@ -49,7 +49,14 @@
 <script src="/app/main/mainCtrl.js"></script>
 <script src="/app/views/dashboard/dashboardCtrl.js"></script>
 <script src="/app/views/login/loginCtrl.js"></script>
-<script src="/app/views/rockClimbing/rockCtrl.js"></script>   
+<script src="/app/views/rockClimbing/rockCtrl.js"></script>
 <!-- <script src="js/bootstrap.min.js"></script> -->
+
+<script>
+	L.mapbox.accessToken = 'pk.eyJ1IjoiZnJlZHJpY2tqb25lcyIsImEiOiJsTzFyT0ZBIn0.Ulb8SAqQO5dutxwjaQeCwA';
+	var map = L.mapbox.map('rock-map', 'fredrickjones.l6jlgmj1', {
+		scrollWheelZoom: false
+	}).setView([40, -74.50], 15);
+</script>
 </body>
 </html>

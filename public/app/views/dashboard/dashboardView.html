@@ -2,17 +2,18 @@
 
 <form>
 	<div class="form-group">
-		<label for="cragName"></label>
+		<label for="cragName">crag name</label>
 		<input type="text" class="form-control" id="cragName" placeholder="Crag Name">
 	</div>
 	<div class="form-group">
-		<label for="cragLat"></label>
+		<label for="cragLat">latitude cords</label>
 		<input type="number" class="form-control" id="cragLat" placeholder="Latitude">
 	</div>
 	<div class="form-group">
-		<label for="cragLong"></label>
+		<label for="cragLong">longitude cords</label>
 		<input type="number" class="form-control" id="cragLong" placeholder="Longitude">
 	</div>
+	<label>Trail Head?</label>
 	<div class="radio-inline">
 		<label>
 			<input type="radio" name="optionsRadios" id="optionYes" value="true" checked>
@@ -25,40 +26,42 @@
 			No
 		</label>
 	</div>
-	<select class="form-control">
-		<option>5.1</option>
-		<option>5.2</option>
-		<option>5.3</option>
-		<option>5.4</option>
-		<option>5.5</option>
-		<option>5.6</option>
-		<option>5.7</option>
-		<option>5.8</option>
-		<option>5.9</option>
-		<option>5.10a</option>
-		<option>5.10b</option>
-		<option>5.10c</option>
-		<option>5.10d</option>
-		<option>5.11a</option>
-		<option>5.11b</option>
-		<option>5.11c</option>
-		<option>5.11d</option>
-		<option>5.12a</option>
-		<option>5.12b</option>
-		<option>5.12c</option>
-		<option>5.12d</option>
-		<option>5.13a</option>
-		<option>5.13b</option>
-		<option>5.13c</option>
-		<option>5.13d</option>
-		<option>5.14a</option>
-		<option>5.14b</option>
-		<option>5.14c</option>
-		<option>5.14d</option>
-		<option>5.15a</option>
-		<option>5.15b</option>
-		<option>5.15c</option>
-		<option>5.15d</option>
-	</select>
+	<div class="form-group">
+		<select class="form-control">
+			<option><label>climb dificulty</label></option>
+			<option>5.1</option>
+			<option>5.2</option>
+			<option>5.3</option>
+			<option>5.4</option>
+			<option>5.5</option>
+			<option>5.6</option>
+			<option>5.7</option>
+			<option>5.8</option>
+			<option>5.9</option>
+			<option>5.10a</option>
+			<option>5.10b</option>
+			<option>5.10c</option>
+			<option>5.10d</option>
+			<option>5.11a</option>
+			<option>5.11b</option>
+			<option>5.11c</option>
+			<option>5.11d</option>
+			<option>5.12a</option>
+			<option>5.12b</option>
+			<option>5.12c</option>
+			<option>5.12d</option>
+			<option>5.13a</option>
+			<option>5.13b</option>
+			<option>5.13c</option>
+			<option>5.13d</option>
+			<option>5.14a</option>
+			<option>5.14b</option>
+			<option>5.14c</option>
+			<option>5.14d</option>
+			<option>5.15a</option>
+			<option>5.15b</option>
+			<option>5.15c</option>
+			<option>5.15d</option>
+		</select>
 	<button type="submit" class="btn btn-default" ng-click="addCrag()">Submit</button>
 </form>
