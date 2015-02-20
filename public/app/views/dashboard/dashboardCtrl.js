@@ -2,6 +2,8 @@
 var app = angular.module('knotOutdoors');
 
 app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, locationService, dashboardService, $location) {
+	$scope.buttonStatus = 'Add Crag';
+	
 	$scope.addCrag = function() {
 		$scope.buttonStatus = "Adding Crag...";
 		locationService.getCoords().then(function(data){

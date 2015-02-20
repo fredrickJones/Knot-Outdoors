@@ -177,4 +177,22 @@ p {
 
 }
 
+.angular-google-map-container {
+	height: 500px;
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+	border: 3px solid rgba(55, 55, 55, 1);
+}
+
+.pin-data {
+	/*height: 200px;*/
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 2.5%;
+	margin-bottom: 2.5%;
+	border: 3px solid rgba(55, 55, 55, 1);
+}
+
 
