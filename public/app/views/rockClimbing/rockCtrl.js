@@ -1,13 +1,10 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('rockCtrl', function($scope) {
-	// L.mapbox.accessToken = 'pk.eyJ1IjoiZnJlZHJpY2tqb25lcyIsImEiOiJsTzFyT0ZBIn0.Ulb8SAqQO5dutxwjaQeCwA';
-	// var geolocate = document.getElementById('geolocate');
-	// var map = L.mapbox.map('rock-map', 'fredrickjones.l6jlgmj1');
+app.controller('rockCtrl', function($scope, rockService) {
 
-	// var myLayer = L.mapbox.featureLayer().addTo(map);
 
+// this will use the users current location after clicking the button
 	// if (!navigator.geolocation) {
 	// 	geolocate.innerHTML = 'Geolocation is not available';
 	// } else {
@@ -17,7 +14,6 @@ app.controller('rockCtrl', function($scope) {
 	// 		map.locate();
 	// 	};
 	// };
-
 	// map.on('locationfound', function(e) {
 	// 	map.fitBounds(e.bounds);
 

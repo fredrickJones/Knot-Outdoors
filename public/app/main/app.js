@@ -5,12 +5,12 @@ app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: './app/views/rockClimbing/rockView.html',
-			controller: 'rockCtrl',
-			resolve: {
-				crags: function(rockService){
-					return rockService.getAll();
-				}
-			}
+			controller: 'rockCtrl'//,
+			// resolve: {
+			// 	crags: function(rockService){
+			// 		return rockService.getAll();
+			// 	}
+			// }
 		})
 		.when('/login', {
 			templateUrl: './app/views/login/loginView.html',
@@ -45,5 +45,13 @@ app.config(function($routeProvider) {
 			redirectTo: '/'
 		});
 });
+
+// app.config(function(uiGmapGoogleMapApiProvider) {
+//     uiGmapGoogleMapApiProvider.configure({
+//     	key: 'AIzaSyCkEtZg6ov1AuDiSuDGjEQnYOaE_529zfg',
+//         v: '3.17',
+//         libraries: 'weather,geometry,visualization'
+//     });
+// });
 
 
