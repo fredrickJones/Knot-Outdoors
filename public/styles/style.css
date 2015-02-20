@@ -1,40 +1,180 @@
 /** { outline: 1px solid red; }*/
 
-body {
+html {
+	height: 100%;
 	width: 100%;
 }
 
+body {
+	height: 95%;
+	width: 100%;
+	font-family: sans-serif;
+	background: rgba(151, 151, 151, 1);
+}
+
+p {
+	text-align: center;
+	margin: 3px 0;
+	font-size: 17px;
+}
+
 .main-container {
-	width: 80%;
+	width: 75%;
+	margin: 10px auto;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.86);
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	box-shadow: 0 0px 5px rgba(0,0,0,.5);
+}
+
+.main-container h1 {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.main-container h2 {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.main-container h3{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.main-container h1, .main-container h2, .main-container h3 {
+	text-align: center;
+	margin: 5px 0;
+	font-family: Raleway, Helvetica Neue, Helvetica, Arial, Sans Serif;
+	color:#999;
+}
+
+.header__main-image {
+	height: 285px;
+	background: #ccc;
+	margin: -20px -20px 0 -20px;
+	box-shadow: inset 0 -100px 100px -100px rgba(0,0,0,.5);
+	/*background: url(../images/city_sunlight.jpg) no-repeat;*/
+	background-size: cover;
+	background-position: center;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.main-logo {
+	width: 150px;
+	height: 150px;
+	background: url(../images/outdoorLogo.png) center no-repeat;
+	background-size: 100%;
+	background-color: white;
+	border: 1px solid #ccc;
+	margin: 0 auto;
+	margin-top: -75px;
+	box-shadow: 0 -5px 10px -5px rgba(0,0,0,.5);
+	border-radius: 75px;
+	-webkit-border-radius: 75px;
+	-moz-border-radius: 75px;
+	-o-border-radius: 75px;
+}
+
+.main-nav {
+	align-items: center;
+	margin: 10px;
+	padding: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.main-nav .nav-item {
+	text-align: center;
+	padding: 15px;
+	text-decoration: none;
+	color: #3d3d3b;
+}
+
+.container {
+	text-align: center;
+	width: 100%;
 	margin: 0 auto;
 }
 
-/*.header {
-	position: inherit;
-}*/
-
-.header .main-logo.img-responsive {
-	width: 5%;
-	/*position: fixed;
-	top: 2%;
-	left: 2%;*/
+.row {
+	margin: 0 auto;
+	width: 100%;
 }
 
-/*.header h1 {
-	text-align: right;
-	width: 15%;
-	margin: 20px 20px 10px 0;
-	float: right;
-}*/
+.flex-box {
+	padding: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
 
-/* Extra small devices (phones, less than 768px) */
- /*No media query since this is the default in Bootstrap */
+.list {
+	float: left;
+	width: 45%;
+	margin: 20px;
+	min-height: 200px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	box-shadow: 0 0px 5px rgba(0,0,0,.5);
+}
 
-/* Small devices (tablets, 768px and up) */
-/*@media (min-width: @screen-sm-min) { ... }
-*/
-/* Medium devices (desktops, 992px and up) */
-/*@media (min-width: @screen-md-min) { ... }
-*/
-/* Large devices (large desktops, 1200px and up) */
-/*@media (min-width: @screen-lg-min) { ... }*/
+.person {
+	width: 90%;
+	margin: 5px auto;
+	min-height: 20px;
+	background: rgba(255, 255, 255, .85);
+	display: block;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	box-shadow: 0 0px 5px rgba(0,0,0,.5);
+	cursor: pointer;
+}
+
+.person-name {
+	text-align: left;
+	width: 60%;
+	float: left;
+	margin: 5px;
+	line-height: 22px;
+	font-size: 14px;
+	font-weight: lighter;
+}
+
+.person-address {
+	text-align: left;
+	margin: 5px;
+	line-height: 22px;
+	font-size: 14px;
+	font-weight: lighter;
+}
+
+.person-button {
+	margin: 5px 5px 5px 0;
+	font-weight: lighter;
+}
+
+/*-- Address Animation --*/
+.slide.ng-enter, .slide.ng-leave {
+  -webkit-transition:0.5s linear ease;
+  transition:0.5s linear ease;
+}
+
+/*-- extra stuff --*/
+.view-content {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0 25px;
+
+}
+
+

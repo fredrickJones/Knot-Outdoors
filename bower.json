@@ -1,0 +1,19 @@
+{
+  "name": "Knot-Outdoors",
+  "version": "0.0.0",
+  "homepage": "https://github.com/fredrickJones/Knot-Outdoors",
+  "authors": [
+    "Fredrick Jones <fredrick.w.jones@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-mapbox": "~0.1.4"
+  }
+}

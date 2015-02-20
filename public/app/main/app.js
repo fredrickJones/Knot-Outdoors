@@ -5,7 +5,12 @@ app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: './app/views/rockClimbing/rockView.html',
-			controller: 'rockCtrl'
+			controller: 'rockCtrl',
+			resolve: {
+				crags: function(rockService){
+					return rockService.getAll();
+				}
+			}
 		})
 		.when('/login', {
 			templateUrl: './app/views/login/loginView.html',
@@ -40,3 +45,5 @@ app.config(function($routeProvider) {
 			redirectTo: '/'
 		});
 });
+
+
