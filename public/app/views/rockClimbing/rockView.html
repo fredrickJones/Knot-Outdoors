@@ -1,17 +1,17 @@
 <h1>Rock Climbing</h1>
 
-<div id="map-canvas">
-	<ui-gmap-google-map class="map" center="map.center" zoom="map.zoom" draggable="true" options="{scrollwheel: false}">
-		<ui-gmap-marker click="viewCragData(crag.name, crag.coords.latitude, crag.coords.longitude, crag.dificulty, crag.author, temp, weather)" ng-repeat="crag in rockClimbing" coords="crag.coords" idKey="1" >
-		</ui-gmap-marker>
-	</ui-gmap-google-map>
+<ui-gmap-google-map class="map" center="map.center" zoom="map.zoom" draggable="true" options="{scrollwheel: false}">
+	<ui-gmap-layer type="TerrainLayer"></ui-gmap-layer>
+	<ui-gmap-marker ng-repeat="crag in rockClimbing" coords="crag.coords" idKey="crag.id" click="viewCragData(crag.name, crag.coords.latitude, crag.coords.longitude, crag.dificulty, temp, weather)">
+	</ui-gmap-marker>
+	<!-- </ui-gmap-google-layer> -->
+</ui-gmap-google-map>
 </div>
 <!-- 
 <div class="crag-data">
 	<h4>Name: <em>{{name}}</em></h4>
 	<h4>Location: <em>{{latitude}}, {{longitude}}</em></h4>
 	<h4>Dificulty: <em>{{dificulty}}</em></h4>
-	<h4>Author: <em>{{author}}</em></h4>
 	<h4>Temperature: <em>{{temp}}</em></h4>
 	<h4>Forecast: <em>{{weather}}</em></h4>
 </div> -->
