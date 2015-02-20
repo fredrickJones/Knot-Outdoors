@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('knotOutdoors', ['ngRoute']);
+var app = angular.module('knotOutdoors', ['ngRoute', 'uiGmapgoogle-maps']);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -46,12 +46,12 @@ app.config(function($routeProvider) {
 		});
 });
 
-// app.config(function(uiGmapGoogleMapApiProvider) {
-//     uiGmapGoogleMapApiProvider.configure({
-//     	key: 'AIzaSyCkEtZg6ov1AuDiSuDGjEQnYOaE_529zfg',
-//         v: '3.17',
-//         libraries: 'weather,geometry,visualization'
-//     });
-// });
+app.config(function(uiGmapGoogleMapApiProvider) {
+	uiGmapGoogleMapApiProvider.configure({
+		key: 'AIzaSyAGhVPYglL71Y7AXoJBZUoHVYszan04PK4',
+		v: '3.17',
+ 		libraries: 'weather,geometry,visualization'
+	});
+});
 
 

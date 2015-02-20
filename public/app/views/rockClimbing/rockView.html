@@ -1,18 +1,10 @@
 <h1>Rock Climbing</h1>
 
-<div id="map-canvas"></div>
-
-<!-- 
-<mapbox map-id="fredrickjones.l6jlgmj1" lat="47.603569" lng="-122.329453" zoom="14">
-	<div id="rock-map"></div>
-	<div ng-repeat="crag in rockClimbing | filter: filterTerm">
-		<marker lat="{{crag.coords.lat}}" lng="{{crag.coords.lng}}" size="small" color="#39cccc" symbol="">
-			<h1>{{crag.name}}</h1>
-			<p>{{crag.coords}}</p>
-		</marker>
-	</div>
-	<a href="#" id="geolocate" class="btn btn-default" ng-click="geoLocate()">Find me</a>
-</mapbox>
- -->
+<div id="map-canvas">
+	<ui-gmap-google-map class="map" center="map.center" zoom="map.zoom" draggable="true" options="{scrollwheel: false}">
+		<ui-gmap-marker click="viewCragData(crag.name, crag.coords.latitude, crag.coords.longitude, crag.dificulty, crag.author, temp, weather)" ng-repeat="pin in pins" coords="pin.coords" idKey="1" >
+		</ui-gmap-marker>
+	</ui-gmap-google-map>
+</div>
 
 
