@@ -6,36 +6,45 @@ var Express = require('express'),
 	FacebookStrategy = require('passport-facebook').Strategy,
 	// InstagramStrategy = require('passport-instagram').Strategy,
 	// TwitterStrategy = require('passport-twitter').Strategy,
-	Mongoose = require('mongoose'),
-	Cors = require('cors'),
-	Request = require('request');	// <--Don't know if I need this
+	Mongoose = require('mongoose');
 
 var env = require('./serverAssets/env'),
-	userCtrl = require('./serverAssets/controllers/userControl'),
+	userControl = require('./serverAssets/controllers/userControl'),
 	rockControl = require('./serverAssets/controllers/rockControl');
 
 var app = Express();
 var port = 9099;
 var mongoURI = 'localhost/outdoors';
 
-// middleware
+Mongoose.connect(mongoURI);
+
+
+// MIDDLEWARE
 app.use(Express.static(__dirname + '/public'));
 app.use(BodyParser.json());
 app.use(Session({secret: 'AGEGIEO38423dknoiwhud983u3Efhe83bf3RsG', saveUninitialized: true, resave: true}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 
+
+// AUTHORIZATION FUNCTIONS
 Passport.use(new FacebookStrategy({
 	clientID: env.FACEBOOK.APP_ID,
 	clientSecret: env.FACEBOOK.APP_SECRET,
 	callbackURL: "http://localhost:9099/auth/facebook/callback"
 	}, function(token, refreshToken, profile, done) {
-		userCtrl.updateOrCreate(profile).then(function(results) {
+		userControl.updateOrCreate(profile).then(function(results) {
 			done(null, profile);
 		}, function(err) {
 			done(err, profile);
 		}
 	);
+}));
+app.get('/auth/facebook', Passport.authenticate('facebook'), function(req, res) {
+	return res.status(200).end();
+});
+app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
+	failureRedirect: '/login', successRedirect: '/#/dashboard'	// <--Successful authentication, redirect to dashboard.
 }));
 
 // Passport.use(new InstagramStrategy({
@@ -47,6 +56,12 @@ Passport.use(new FacebookStrategy({
 // 			return done(err, user);
 // 	});
 // }));
+// app.get('/auth/instagram', Passport.authenticate('instagram'));
+// app.get('/auth/instagram/callback', Passport.authenticate('instagram', {
+// 	failureRedirect: '/login'
+// }), function(req, res) {
+// 	res.redirect('/');	// <--Successful authentication, redirect to dashboard.
+// });
 
 // Passport.use(new TwitterStrategy({
 // 	clientID: env.TWITTER.CONSUMER_KEY,
@@ -57,8 +72,28 @@ Passport.use(new FacebookStrategy({
 // 			return done(err, user);
 // 	});
 // }));
+// app.get('/auth/twitter', Passport.authenticate('twitter'));
+// app.get('/auth/twitter/callback', Passport.authenticate('twitter', {
+// 	failureRedirect: '/login'
+// }), function(req, res) {
+// 	res.redirect('/');	// <--Successful authentication, redirect to dashboard.
+// });
 
 
+// PASSPORT
+Passport.serializeUser(function(user, done) {
+	done(null, user);
+});
+Passport.deserializeUser(function(obj, done) {
+	userControl.getUser(obj.id).then(function(results) {
+		done(null, results);
+	}, function(err) {
+		done(null, obj);
+	});
+});
+
+
+// AUTH VERIFICATION
 var isAuthed = function(req, res, next) {
 	if(!req.isAuthenticated()) {
 		return res.status(403).end();
@@ -68,46 +103,15 @@ var isAuthed = function(req, res, next) {
 };
 
 
-Passport.serializeUser(function(user, done) {
-	done(null, user);
-});
-Passport.deserializeUser(function(obj, done) {
-	userCtrl.getUser(obj.id).then(function(results) {
-		done(null, results);
-	}, function(err) {
-		done(null, obj);
-	});
-});
+// CRUD FUNCTIONS
+app.post('/api/user', isAuthed, userControl.addUser);
+app.get('/api/user/:id', isAuthed, userControl.getUser);
+
+app.post('/api/rockClimb', isAuthed, rockControl.create);
+app.get('/api/rockClimb', isAuthed, rockControl.getCrags);
 
 
-app.get('/auth/facebook', Passport.authenticate('facebook'), function(req, res) {
-	return res.status(200).end();
-});
-app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
-	failureRedirect: '/login', successRedirect: '/#/dashboard'	// <--Successful authentication, redirect to dashboard.
-}));
-
-// app.get('/auth/instagram', Passport.authenticate('instagram'));
-// app.get('/auth/instagram/callback', Passport.authenticate('instagram', {
-// 	failureRedirect: '/login'
-// }), function(req, res) {
-// 	res.redirect('/');	// <--Successful authentication, redirect to dashboard.
-// });
-
-// app.get('/auth/twitter', Passport.authenticate('twitter'));
-// app.get('/auth/twitter/callback', Passport.authenticate('twitter', {
-// 	failureRedirect: '/login'
-// }), function(req, res) {
-// 	res.redirect('/');	// <--Successful authentication, redirect to dashboard.
-// });
-
-
-app.get('/api/user/:id', isAuthed, function(req, res) {
-});
-
-
-
-Mongoose.connect(mongoURI);
+// CONNECTIONS
 Mongoose.connection.once('open', function(){
 	console.log('connected to mongoDB via ' + mongoURI);
 });

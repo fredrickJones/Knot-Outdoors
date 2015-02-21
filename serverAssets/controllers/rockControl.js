@@ -1,26 +1,25 @@
 'use strict';
-var crag = require('./../models/rockModel');
+var Crag = require('./../models/rockModel');
 
 module.exports = {
-	post: function(req, res){
-		crag.create(req.body, function(err, results){
+	create: function(req, res){
+		var newCrag = new Crag(req.body);
+		newCrag.save(function(err, crag) {
 			if(err) {
-				console.log(err);
-				res.status(500).json(err);
+				return res.status(500).end();
 			} else {
-				res.status(200).json(results);
+				return res.status(200).json(crag);
 			}
 		});
 	},
-	getAll: function(req, res){
-		crag.find(function(err, response){
-			if(err){
-				console.log(err);
-				res.status(500).json(err);
+	getCrags: function(req, res) {
+		Crag.find({}, function(err, response) {
+			if(err) {
+				return res.status(500).json(err);
 			} else {
 				res.status(200).json(response);
 			}
-		});
+		}).limit(100); //<--will this work and how do I get the 100 closest to current location?
 	}
 };
 

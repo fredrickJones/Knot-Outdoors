@@ -48,7 +48,7 @@ module.exports = {
 		})
 		return deferred.promise;
 	},
-	put: function(req, res){
+	addUser: function(req, res){
 		delete req.body._id;
 		console.log(req.body)
 		User.update({ _id: req.params.id }, req.body, function(err, results){

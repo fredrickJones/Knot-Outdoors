@@ -6,8 +6,8 @@ app.config(function($routeProvider) {
 		.when('/', {
 			templateUrl: './app/views/rockClimbing/rockView.html',
 			controller: 'rockCtrl'//,
-			// resolve: {
-			// 	crags: function(rockService){
+			// resolve: {  //<--this will load markers on load
+			// 	crags: function(rockService){  
 			// 		return rockService.getAll();
 			// 	}
 			// }

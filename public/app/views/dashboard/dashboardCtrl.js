@@ -6,7 +6,9 @@ app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, dashboardSe
 
 	$scope.addCrag = function() {
 		$scope.buttonStatus = "Adding Crag...";
-		dashboardService.addCrag().then(function(data){
+		dashboardService.add({
+			
+		}).then(function(data){
 			$scope.pins.$add(data).then(function(){
 				$location.path('/rock-climbing');
 				$scope.inputActivity = '';
