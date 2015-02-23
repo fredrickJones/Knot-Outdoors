@@ -1,51 +1,124 @@
-
-<form>
-	<h2>Add a New Crag</h2>
-	<input class="form-control" ng-model="inputName" id="cragName" type="text" placeholder="Crag Name">
-	<input class="form-control" ng-model="inputLat" id="cragLat" type="number" placeholder="Latitude">
-	<input class="form-control" ng-model="inputLon" id="cragLong" type="number" placeholder="Longitude">
-	<label>Trail Head?</label>
-	<div class="radio-inline" ng-model="">
-		<input type="radio" name="optionsRadios" id="optionYes" value="true" checked>Yes
-		<input type="radio" name="optionsRadios" id="optionNo" value="false">No
-	</div>
-	<select class="form-control" ng-model="selectDificult" id="dificulty">
-		<option><label>climb dificulty</label></option>
-		<option>5.1</option>
-		<option>5.2</option>
-		<option>5.3</option>
-		<option>5.4</option>
-		<option>5.5</option>
-		<option>5.6</option>
-		<option>5.7</option>
-		<option>5.8</option>
-		<option>5.9</option>
-		<option>5.10a</option>
-		<option>5.10b</option>
-		<option>5.10c</option>
-		<option>5.10d</option>
-		<option>5.11a</option>
-		<option>5.11b</option>
-		<option>5.11c</option>
-		<option>5.11d</option>
-		<option>5.12a</option>
-		<option>5.12b</option>
-		<option>5.12c</option>
-		<option>5.12d</option>
-		<option>5.13a</option>
-		<option>5.13b</option>
-		<option>5.13c</option>
-		<option>5.13d</option>
-		<option>5.14a</option>
-		<option>5.14b</option>
-		<option>5.14c</option>
-		<option>5.14d</option>
-		<option>5.15a</option>
-		<option>5.15b</option>
-		<option>5.15c</option>
-		<option>5.15d</option>
-	</select>
-	<button type="submit" class="btn btn-default" ng-click="addCrag()">{{buttonStatus}}</button>
+<form class="form-horizontal" name="crag_form" novalidate ng-submit="addNewCrag(crag)">
+	<fieldset>
+		<legend><h2>Add a New Crag</h2></legend>
+		<div class="row">
+			<div class="meddium-12 columns">
+				<label>Crag Name <span class="required">*</span></label>
+				<input type="text"
+					placeholder="Crag Name"
+					name="name"
+					ng-model="crag.name"
+					ng-class="{error: crag_form.name.$dirty && crag_form.name.$invalid}"
+					ng-focus required />
+				<div class="error-container"
+					ng-show="crag_form.name.$dirty && crag_form.name.$invalid && !crag_form.name.$focused">
+					<small class="error"
+						ng-show="crag_form.name.$error.required">
+						Give the crag a name! <small>It is required after all.</small>
+					</small>
+				</div>
+			</div>
+			<div class="meddium-12 columns">
+				<label>Crag Latitude <span class="required">*</span></label>
+				<input type="number"
+					placeholder="Crag Latitude"
+					name="lat"
+					ng-model="crag.lat"
+					ng-class="{error: crag_form.lat.$dirty && crag_form.lat.$invalid}"
+					ng-focus required />
+				<div class="error-container"
+					ng-show="crag_form.lat.$dirty && crag_form.lat.$invalid && !crag_form.lat.$focused">
+					<small class="error"
+						ng-show="crag_form.lat.$error.required">
+						Give the crag a latitude! <small>It is required after all.</small>
+					</small>
+				</div>
+			</div>
+			<div class="meddium-12 columns">
+				<label>Crag Longitude <span class="required">*</span></label>
+				<input type="number"
+					placeholder="Crag Longitude"
+					name="lon"
+					ng-model="crag.lon"
+					ng-class="{error: crag_form.lon.$dirty && crag_form.lon.$invalid}"
+					ng-focus required />
+				<div class="error-container"
+					ng-show="crag_form.lon.$dirty && crag_form.lon.$invalid && !crag_form.lon.$focused">
+					<small class="error"
+						ng-show="crag_form.lon.$error.required">
+						Give the crag a longitude! <small>It is required after all.</small>
+					</small>
+				</div>
+			</div>
+			<div class="meddium-12 columns">
+				<label>Trail Head? <span class="required">*</span></label>
+				<label>
+					<input type="radio"
+						name="trail" 
+						ng-model="crag.trail"
+						value="true"
+						ng-required="!crag.trail"
+						checked=""> Yes
+				</label>
+				<label>
+					<input type="radio"
+						name="trail"
+						ng-model="crag.trail" 
+						value="false"
+						ng-required="!crag.trail"> No
+				</label>
+			</div>
+			<div class="meddium-12 columns">
+				<label>Crag Dificulty <span class="required">*</span></label>
+				<select name="dificult"
+					ng-model="crag.dificult"
+					ng-class="{error: crag_form.dificult.$dirty && crag_form.dificult.$invalid}"
+					ng-focus required />
+					<option>5.1</option>
+					<option>5.2</option>
+					<option>5.3</option>
+					<option>5.4</option>
+					<option>5.5</option>
+					<option>5.6</option>
+					<option>5.7</option>
+					<option>5.8</option>
+					<option>5.9</option>
+					<option>5.10a</option>
+					<option>5.10b</option>
+					<option>5.10c</option>
+					<option>5.10d</option>
+					<option>5.11a</option>
+					<option>5.11b</option>
+					<option>5.11c</option>
+					<option>5.11d</option>
+					<option>5.12a</option>
+					<option>5.12b</option>
+					<option>5.12c</option>
+					<option>5.12d</option>
+					<option>5.13a</option>
+					<option>5.13b</option>
+					<option>5.13c</option>
+					<option>5.13d</option>
+					<option>5.14a</option>
+					<option>5.14b</option>
+					<option>5.14c</option>
+					<option>5.14d</option>
+					<option>5.15a</option>
+					<option>5.15b</option>
+					<option>5.15c</option>
+					<option>5.15d</option>
+				</select>
+				<div class="error-container"
+					ng-show="crag_form.dificult.$dirty && crag_form.dificult.$invalid && !crag_form.dificult.$focused">
+					<small class="error"
+						ng-show="crag_form.dificult.$error.required">
+						How dificult is this crag?<small>Others sure would appriciate it.</small>
+					</small>
+				</div>
+			</div>
+		</div>
+		<button type="submit" ng-disabled="crag_form.$invalid" class="btn btn-default">Add Crag</button>
+	</fieldset>
 </form>
 
 

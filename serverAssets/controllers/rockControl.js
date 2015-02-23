@@ -13,13 +13,21 @@ module.exports = {
 		});
 	},
 	getCrags: function(req, res) {
-		Crag.find({}, function(err, response) {
+		Crag.find({
+			location: {
+				$near: {
+					geometry: {type:'Point', coordinates: [user.currentLocation]},
+					$minDistance: 0,
+					$maxDistance: 85000
+				}
+			}
+		}, function(err, response) {
 			if(err) {
 				return res.status(500).json(err);
 			} else {
 				res.status(200).json(response);
 			}
-		}).limit(100); //<--will this work and how do I get the 100 closest to current location?
+		});
 	}
 };
 

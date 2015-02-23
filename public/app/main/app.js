@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
 			controller: 'rockCtrl'//,
 			// resolve: {  //<--this will load markers on load
 			// 	crags: function(rockService){  
-			// 		return rockService.getAll();
+			// 		return rockService.getNear();
 			// 	}
 			// }
 		})

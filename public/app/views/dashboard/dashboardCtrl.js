@@ -1,24 +1,47 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, dashboardService, crags) {
-	$scope.buttonStatus = 'Add Crag';
+app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService, crags) {
+	$scope.crag = {};
 
-	$scope.addCrag = function() {
-		$scope.buttonStatus = "Adding Crag...";
-		dashboardService.add({
-			
-		}).then(function(data){
-			$scope.pins.$add(data).then(function(){
-				$location.path('/rock-climbing');
-				$scope.inputActivity = '';
-				$scope.inputSpot = '';
-				$scope.inputDescription = '';
-				$scope.inputAuthor = '';
-				$scope.buttonStatus = "Add Location";
-			})
-		})
+	$scope.sumbitted = false;
+	$scope.addNewCrag = function(crag) {
+		if ($scope.crag_form.$valide) {
+			rockService.addCrag(crag);
+		} else {
+			$scope.crag_form.sumbitted = true;
+		}
 	};
+
+
+	// $scope.master = {};
+	// $scope.reset = function(form) {
+	// 	if (form) {
+	// 		form.$setPristine();
+	// 		form.$setUntuched();
+	// 	}
+	// 	$scope.crag = angular.copy($scope.master);
+	// };
+
+	// $scope.reset();
 });
 
+app.directive('ngFocus', [function() {
+	var FOCUS_CLASS = 'ng-focused';
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function(scope, ele, attrs, ctrl) {
+			ctrl.$focused = false;
+			ele.bind('focus', function(evt) {
+				ele.addClass(FOCUS_CLASS);
+				scope.$apply(function() {ctrl.$focused = true});
+			}).bind('blur', function(evt) {
+				ele.removeClass(FOCUS_CLASS);
+				scope.$apply(function() {ctrl.$focused = false});
+
+			});
+		}
+	}
+}]);
 
