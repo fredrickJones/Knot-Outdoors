@@ -7,8 +7,8 @@ app.service('rockService', function($http, locationService){
 	};
 
 	this.getNear = function() {
-		locationService.getCoords().then(function(coords){
-			$http.get('api/rockClimb?lat='+coords.latitude+"&lon="+coords.longitude);
+		locationService.getCoords().then(function(location){
+			$http.get('api/rockClimb?' + location); //lon=' + coords.longitude + '&lat=' + coords.latitude);
 		});
 	};
 	// resolve: {  //<--this will load markers on load

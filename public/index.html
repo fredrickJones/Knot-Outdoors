@@ -20,7 +20,7 @@
 			<h2>with your favorite crags</h2>
 		</div>
 		<nav class="flex space-around">
-			<a href="/"><button class="btn btn-primary push-left">Rock Climbing</button></a>
+			<a href="/#/rock-climbing"><button class="btn btn-primary push-left">Rock Climbing</button></a>
 			<a href="/#/login" ng-show="!user"><button class="btn btn-primary push-right">Login</button></a>
 			<button ng-show="user" ng-click="logout()" class="btn btn-warning">Logout</button>
 		</nav>
@@ -37,6 +37,7 @@
 <!-- maps -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.0.12/angular-google-maps.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <!-- app -->
 <script src="/app/main/app.js"></script>
 <!-- controllers -->

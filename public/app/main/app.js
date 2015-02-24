@@ -3,36 +3,36 @@ var app = angular.module('knotOutdoors', ['ngRoute', 'uiGmapgoogle-maps']);
 
 app.config(function($routeProvider) {
 	$routeProvider
-		.when('/', {
-			templateUrl: './app/views/rockClimbing/rockView.html',
-			controller: 'rockCtrl',
-			resolve: {  //<--this will load points on load
-				crags: function(rockService){
-					console.log("Hi fred")
-					return rockService.getNear();
-				}
-			}
-		})
+		// .when('/', {
+		// 	templateUrl: './app/views/home/homeView.html',
+		// 	controller: 'homeCtrl'
+		// })
 		.when('/login', {
 			templateUrl: './app/views/login/loginView.html',
 			controller: 'loginCtrl'
 		})
 		.when('/dashboard', {
 			templateUrl: './app/views/dashboard/dashboardView.html',
-			controller: 'dashboardCtrl'//,
-			// resolve: {
-			// 	user: function(userService, $route) {
-			// 		return userService.get($route.current.params.id);
-			// 	}
-			// }
+			controller: 'dashboardCtrl'
 		})
-		// .when('/rock-climbing', {
-		// 	templateUrl: './views/rockClimbing/rockView.html',
-		// 	controller: 'rockCtrl'
-		// })
+		.when('/rock-climbing', {
+			templateUrl: './app/views/rockClimbing/rockView.html',
+			controller: 'rockCtrl',
+			resolve: {  //<--this will load points on load
+				crags: function(rockService){
+					// console.log("Hi fred");
+					return rockService.getNear();
+				}
+			}
+		})
 		// .when('/camping', {
-		// 	temlateUrl: '/temlate/camping.html',
-		// 	controller: 'campingCtrl'
+		// 	temlateUrl: './app/views/camping/camping.html',
+		// 	controller: 'campingCtrl',
+		// 	resolve: {
+		// 		sites: function(campService) {
+		// 			return campService.getNear();
+		// 		}
+		// 	}
 		// })
 		// .when('/hiking', {
 		// 	temlateUrl: '/temlate/hiking.html',
@@ -43,7 +43,7 @@ app.config(function($routeProvider) {
 		// 	controller: 'fishingCtrl'
 		// })
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/rock-climbing'
 		});
 });
 

@@ -17,45 +17,43 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 		});
 	};
 
-	function centerMap() {
-		var geo = navigator.geolocation;
-		var success = function(position) {
-			$scope.map = {
-				center: {
-					latitude: position.coords.latitude,
-					longitude: poition.coords.longitude
-				},
-				zoom: 12
-			};
-		};
-		var error = function(err) {
-			alert('Geolocation failed ' + err);
-		};
-		var settings = {
-			enableHighAccuracy: true
-		};
-		geo.getCurrentPosition(success, error, settings);
-	};
+	// function centerMap() {
+	// 	var geo = navigator.geolocation;
+	// 	var success = function(position) {
+	// 		$scope.map = {
+	// 			center: {
+	// 				latitude: position.coords.latitude,
+	// 				longitude: poition.coords.longitude
+	// 			},
+	// 			zoom: 12
+	// 		};
+	// 	};
+	// 	var error = function(err) {
+	// 		alert('Geolocation failed ' + err);
+	// 	};
+	// 	var settings = {
+	// 		enableHighAccuracy: true
+	// 	};
+	// 	geo.getCurrentPosition(success, error, settings);
+	// };
 
-	function getMarkers() {
-		$scope.rockClimbing = rockService.getAllCrags();
-	};
+	// function getMarkers() {
+	// 	$scope.rockClimbing = rockService.getAllCrags();
+	// };
 
-	$scope.map = {
-		center: {
-			latitude: 40,
-			longitude: -111
-		},
-		zoom: 12
-	};
-	$scope.mapOptions = {
-		scrollWheel: false
-	};
-
-	//$scope.rockClimbing = rockService.getAllCrags(); // <-- add the function that gets all crags from database
+	// $scope.map = {
+	// 	center: {
+	// 		latitude: 40,
+	// 		longitude: -111
+	// 	},
+	// 	zoom: 12
+	// };
+	// $scope.mapOptions = {
+	// 	scrollWheel: false
+	// };
 
 });
 
-// db.crags.find({loc: {$near: {$geometry: {type: "Point", coordinates: [40, -111]}}, $maxDistance: 25000, $minDistance: 0}})
+// db.crags.find({loc: {$near: {$geometry: {type: "Point", coordinates: [40, -111]}}, maxDistance: 25000, minDistance: 0}})
 
 
