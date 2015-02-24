@@ -5,12 +5,13 @@ app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: './app/views/rockClimbing/rockView.html',
-			controller: 'rockCtrl'//,
-			// resolve: {  //<--this will load markers on load
-			// 	crags: function(rockService){  
-			// 		return rockService.getNear();
-			// 	}
-			// }
+			controller: 'rockCtrl',
+			resolve: {  //<--this will load points on load
+				crags: function(rockService){
+					console.log("Hi fred")
+					return rockService.getNear();
+				}
+			}
 		})
 		.when('/login', {
 			templateUrl: './app/views/login/loginView.html',

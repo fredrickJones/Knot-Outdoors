@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi) {  //<--injeckt crags from app.js resolve
+app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi, crags) {  //<--injeckt crags from app.js resolve
 	$scope.centerMap = centerMap;
 	$scope.getAllCrags = getMarkers;
 	$scope.viewCragData = function(name, latitude, longitude, dificulty, author, temp, weather) {
@@ -55,5 +55,7 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 	//$scope.rockClimbing = rockService.getAllCrags(); // <-- add the function that gets all crags from database
 
 });
+
+// db.crags.find({loc: {$near: {$geometry: {type: "Point", coordinates: [40, -111]}}, $maxDistance: 25000, $minDistance: 0}})
 
 

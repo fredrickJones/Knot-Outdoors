@@ -1,13 +1,16 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService, crags) {
-	$scope.crag = {};
+app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService) {
+	$scope.crag = {
+		loc: []
+	};
 
 	$scope.sumbitted = false;
-	$scope.addNewCrag = function(crag) {
-		if ($scope.crag_form.$valide) {
-			rockService.addCrag(crag);
+	$scope.addNewCrag = function(cragData) {
+		// console.log(cragData);
+		if ($scope.crag_form.$valid) {
+			rockService.addCrag(cragData);
 		} else {
 			$scope.crag_form.sumbitted = true;
 		}

@@ -107,8 +107,8 @@ var isAuthed = function(req, res, next) {
 app.post('/api/user', isAuthed, userControl.addUser);
 app.get('/api/user/:id', isAuthed, userControl.getUser);
 
-app.post('/api/rockClimb', isAuthed, rockControl.create);
-app.get('/api/rockClimb', isAuthed, rockControl.getCrags);
+app.post('/api/rockClimb', /*isAuthed,*/ rockControl.create);
+app.get('/api/rockClimb', rockControl.getCrags);
 
 
 // CONNECTIONS

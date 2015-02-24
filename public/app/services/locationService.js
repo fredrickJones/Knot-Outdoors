@@ -3,14 +3,12 @@ var app = angular.module('knotOutdoors');
 
 app.service('locationService', function($q, $http) {
 	this.getCoords = function() {
+		var dfd = $q.defer();
 		navigator.geolocation.getCurrentPosition(function(position) {
-			obj.coords.latitude = position.coords.latitude;
-			obj.coords.longitude = position.coords.longitude;
-			dfd.resolve(obj);
+			dfd.resolve(position.coords);
 			}, function(error){
 				console.log(err);
-		});
-
+		}, {enableHighAccuracy: true});
 		return dfd.promise;
 	};
 
