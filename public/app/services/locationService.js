@@ -1,8 +1,10 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.service('locationService', function($http, uiGmapGoogleMapApi) {
+app.service('locationService', function($q, $http, uiGmapGoogleMapApi) {
 	this.getCoords = function() {
+		var deferred = $q.defer();
+
 		var geolocate;
 		var marker;
 		var mapOptions = {
@@ -23,12 +25,15 @@ app.service('locationService', function($http, uiGmapGoogleMapApi) {
 			});
 			navigator.geolocation.watchPosition(function(position) {
 				geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				// console.log(geolocate);
 				map.setCenter(geolocate);
+				deferred.resolve(geolocate);
 			});
 		} else {
 			document.getElementById('map-canvas').innerHTML = 'No Geolocation Support.';
+			deferred.reject('No Geolocation Support.');
 		}
-		return map;
+		return deferred.promise
 	};
 
 

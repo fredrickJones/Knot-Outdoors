@@ -7,19 +7,18 @@ app.service('rockService', function($q, $http, locationService) {
 	};
 
 	this.getNear = function() {
+		// var currentMarkers = [];
 		var deferred = $q.defer();
-
-		getCrag(function() {
-			locationService.getCoords()
-		}).then(function(coords) {
-			$http.get('api/rockClimb?lon=' + coords.longitude + '&lat=' + coords.latitude).then(function(resp) {
+		locationService.getCoords().then(function(coords) {
+			// console.log(coords);
+			$http.get('api/rockClimb?lon=' + coords.D + '&lat=' + coords.k).then(function(resp) {
 				console.log(resp);
-				currentMarkers = [];
-				var markerData = resp.data;
-				for (var i = 0; i < markerData.length; i++) {
-					var cragMarker = new NewMarker(markerData[i].name, markerData[i].loc, i, markerData[i].difficult, markerData[i].trailHead);
-					currentMarkers.push(cragMarker);
-				};
+				// currentMarkers = [];
+				// var markerData = resp.data;
+				// for (var i = 0; i < markerData.length; i++) {
+				// 	var cragMarker = new NewMarker(markerData[i].name, markerData[i].loc[1], markerData[i].loc[0], markerData[i].difficult, markerData[i].trailHead);
+				// 	currentMarkers.push(cragMarker);
+				// };
 				deferred.resolve(resp.data);
 			},
 			function(err) {
