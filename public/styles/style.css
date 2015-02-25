@@ -6,7 +6,7 @@ html {
 }
 
 body {
-	height: 95%;
+	height: 100%;
 	width: 100%;
 	font-family: sans-serif;
 	background: rgba(151, 151, 151, 1);
@@ -177,7 +177,7 @@ p {
 
 }
 
-.angular-google-map-container {
+#map-canvas, .angular-google-map-container {
 	height: 500px;
 	width: 95%;
 	margin: 0 auto;

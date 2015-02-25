@@ -50,7 +50,7 @@ app.config(function($routeProvider) {
 app.config(function(uiGmapGoogleMapApiProvider) {
 	uiGmapGoogleMapApiProvider.configure({
 		key: 'AIzaSyAGhVPYglL71Y7AXoJBZUoHVYszan04PK4',
-		v: '3.17',
+		v: '3.18',
  		libraries: 'weather,geometry,visualization'
 	});
 });

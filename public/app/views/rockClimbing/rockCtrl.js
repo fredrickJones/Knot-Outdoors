@@ -1,59 +1,36 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi, crags) {  //<--injeckt crags from app.js resolve
-	$scope.centerMap = centerMap;
-	$scope.getAllCrags = getMarkers;
-	$scope.viewCragData = function(name, latitude, longitude, dificulty, author, temp, weather) {
+app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi/*, crags*/) {  //<--injeckt crags from app.js resolve
+	$scope.getCrags = getCrags;
+
+	$scope.viewCragData = function(name, lat, lon, diff) {
 		// console.log($scope.rockClimbing);
 		$scope.name = name;
-		$scope.dificulty = dificulty;
-		$scope.latitude = latitude;
-		$scope.longitude = longitude;
-		weatherService.getWeather().then(function(temp, weather) {
- 			console.log(weather);
-			$scope.temp = temp.temp;
-			$scope.weather = temp.weather;
-		});
+		$scope.difficulty = diff;
+		$scope.latitude = lat;
+		$scope.longitude = lon;
 	};
 
-	// function centerMap() {
-	// 	var geo = navigator.geolocation;
-	// 	var success = function(position) {
-	// 		$scope.map = {
-	// 			center: {
-	// 				latitude: position.coords.latitude,
-	// 				longitude: poition.coords.longitude
-	// 			},
-	// 			zoom: 12
-	// 		};
-	// 	};
-	// 	var error = function(err) {
-	// 		alert('Geolocation failed ' + err);
-	// 	};
-	// 	var settings = {
-	// 		enableHighAccuracy: true
-	// 	};
-	// 	geo.getCurrentPosition(success, error, settings);
-	// };
+	$scope.centerMap = function() {
+		// console.log(locationService.getCoords());
+		$scope.map = locationService.getCoords();
+	};
 
-	// function getMarkers() {
-	// 	$scope.rockClimbing = rockService.getAllCrags();
-	// };
+	function getCrags() {
+		$scope.crags = rockService.getNear();
+		// .then(function(resp) {
+		// 	$scope.crags = resp;
+		// });
+	};
 
-	// $scope.map = {
-	// 	center: {
-	// 		latitude: 40,
-	// 		longitude: -111
-	// 	},
-	// 	zoom: 12
+	// $scope.showWeather = true;
+	// $scope.weatherOptions = {
+	// 	temperatureUnits: 'TemperatureUnit.FAHRENHEIT'
 	// };
-	// $scope.mapOptions = {
-	// 	scrollWheel: false
-	// };
-
+	$scope.getCrags();
 });
 
-// db.crags.find({loc: {$near: {$geometry: {type: "Point", coordinates: [40, -111]}}, maxDistance: 25000, minDistance: 0}})
+// db.crags.find({loc: {$near: [40, -111]}, minDistance: 0, maxDistance: 25000})
 
 

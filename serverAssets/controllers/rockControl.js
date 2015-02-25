@@ -18,10 +18,11 @@ module.exports = {
 	getCrags: function(req, res) {
 		console.log(req.query);
 		Crag.find({
-			loc: {$near: [Number(req.query.lon), Number(req.query.lat)]},
-				minDistance: 0,
-				maxDistance: 85000
-			}, function(err, response) {
+			loc: {
+				$near: [Number(req.query.lon), Number(req.query.lat)],
+				$maxDistance: 25
+			}
+		}, function(err, response) {
 				if(err) {
 					console.log(err);
 					return res.status(500).json(err);
