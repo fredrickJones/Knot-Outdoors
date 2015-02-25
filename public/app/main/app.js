@@ -20,8 +20,17 @@ app.config(function($routeProvider) {
 			controller: 'rockCtrl',
 			resolve: {  //<--this will load points on load
 				crags: function(rockService){
-					// console.log("Hi fred");
+					console.log("Hi fred");
 					return rockService.getNear();
+				},
+				center: function(locationService, $q){
+					var dfd = $q.defer()
+					locationService.getCoords().then(function(coords){
+						coords.latitude = coords.lat;
+						coords.longitude = coords.lon;
+						dfd.resolve(coords);
+					})
+					return dfd.promise;
 				}
 			}
 		})
@@ -47,12 +56,12 @@ app.config(function($routeProvider) {
 		});
 });
 
-app.config(function(uiGmapGoogleMapApiProvider) {
-	uiGmapGoogleMapApiProvider.configure({
-		key: 'AIzaSyAGhVPYglL71Y7AXoJBZUoHVYszan04PK4',
-		v: '3.18',
- 		libraries: 'weather,geometry,visualization'
-	});
-});
+// app.config(function(uiGmapGoogleMapApiProvider) {
+// 	uiGmapGoogleMapApiProvider.configure({
+// 		key: 'AIzaSyAGhVPYglL71Y7AXoJBZUoHVYszan04PK4',
+// 		v: '3.18',
+//  		libraries: 'weather,geometry,visualization'
+// 	});
+// });
 
 
