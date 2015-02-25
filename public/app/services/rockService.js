@@ -1,28 +1,26 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.service('rockService', function($http, $q, locationService) {
+app.service('rockService', function($q, $http, locationService) {
 	this.addCrag = function(cragData) {
 		$http.post('/api/rockClimb', cragData);
 	};
 
 	this.getNear = function() {
 		var deferred = $q.defer();
-		locationService.getCoords().then(function(coords) {
+
+		getCrag(function() {
+			locationService.getCoords()
+		}).then(function(coords) {
 			$http.get('api/rockClimb?lon=' + coords.longitude + '&lat=' + coords.latitude).then(function(resp) {
-				// var marker = new google.maps.Marker({
-				// 	position: geolocate,
-				// 	map: map,
-				// 	icon: {
-				// 		path: google.maps.SymbolPath.STAR,
-				// 		scale: 10
-				// 	},
-				// 	fillColor: 'blue',
-				// 	fillOpacity: 0.8,
-				// 	draggable: false
-				// });
 				console.log(resp);
-				deferred.resolve(resp);
+				currentMarkers = [];
+				var markerData = resp.data;
+				for (var i = 0; i < markerData.length; i++) {
+					var cragMarker = new NewMarker(markerData[i].name, markerData[i].loc, i, markerData[i].difficult, markerData[i].trailHead);
+					currentMarkers.push(cragMarker);
+				};
+				deferred.resolve(resp.data);
 			},
 			function(err) {
 				deferred.reject(err);

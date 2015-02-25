@@ -1,8 +1,10 @@
 <h1>Rock Climbing</h1>
 
 <ui-gmap-google-map id="map-canvas" ng-init="centerMap()" center="map.center" zoom="map.zoom" draggable="true" options="{scrollwheel: false}">
-	<ui-gmap-layer type="TerrainLayer"></ui-gmap-layer>
-	<ui-gmap-markers ng-repeat="crag in crags" coords="crag.coords" idKey="crag.id" click="viewCragData(crag.name, crag.coords.latitude, crag.coords.longitude, crag.difficulty)"></ui-gmap-markers>
+	<ui-gmap-layer type="TerrainLayer">
+		<ui-gmap-marker ng-repeat="crag in crags" coords="crag.coords" idKey="crag.id" click="viewCragData(crag.name, crag.latitude, crag.longitude, crag.difficulty)">
+		</ui-gmap-marker>
+	</ui-gmap-layer>
 </ui-gmap-google-map>
 
 <!-- 

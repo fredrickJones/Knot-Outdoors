@@ -4,21 +4,19 @@ var app = angular.module('knotOutdoors');
 app.service('locationService', function($http, uiGmapGoogleMapApi) {
 	this.getCoords = function() {
 		var geolocate;
+		var marker;
 		var mapOptions = {
 			center: geolocate,
 			zoom: 12,
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		};
 		// debugger;
-		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		var map = new google.maps.Map('map-canvas', mapOptions)
+		// var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		if (!!navigator.geolocation) {
 			marker = new google.maps.Marker({
 				position: geolocate,
 				map: map,
-				icon: {
-					path: google.maps.SymbolPath.STAR,
-					scale: 10
-				},
 				fillColor: 'grey',
 				fillOpacity: 0.8,
 				draggable: false
