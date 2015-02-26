@@ -1,9 +1,19 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('rockCtrl', function($q, $scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {  //<--injeckt crags from app.js resolve
+app.controller('rockCtrl', function($q, $scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {
 	$scope.crags = crags;
-	console.log(crags)
+	// console.log(crags);
+	$scope.map = center;
+	console.log(center);
+	$scope.userPin = {
+		id: "user",
+		coords: {
+			latitude: center.latitude,
+			longitude: center.longitude
+		},
+		url: 'images/user-marker.png'
+	}
 
 	$scope.viewCragData = function(name, lat, lon, diff) {
 		// console.log($scope.rockClimbing);
@@ -12,31 +22,16 @@ app.controller('rockCtrl', function($q, $scope, rockService, locationService, ui
 		$scope.latitude = lat;
 		$scope.longitude = lon;
 	};
+
 	$scope.map = {
 		center: center,
-		zoom: 8
+		zoom: 13
 	}
 
-	// $scope.centerMap = function() {
-	// 	var deferred = $q.defer();
-	// 	// console.log(locationService.getCoords());
-	// 	$scope.map = locationService.getCoords();
-	// };
-
-	function getCrags() {
-		$scope.crags = rockService.getNear();
-		// .then(function(resp) {
-		// 	$scope.crags = resp;
-		// });
+	$scope.showWeather = true;
+	$scope.weatherOptions = {
+		temperatureUnits: 'TemperatureUnit.FAHRENHEIT'
 	};
-
-	// $scope.showWeather = true;
-	// $scope.weatherOptions = {
-	// 	temperatureUnits: 'TemperatureUnit.FAHRENHEIT'
-	// };
-	//$scope.getCrags();
 });
-
-// db.crags.find({loc: {$near: [40, -111]}, minDistance: 0, maxDistance: 25000})
 
 

@@ -177,7 +177,7 @@ p {
 
 }
 
-#map-canvas, .angular-google-map-container {
+.angular-google-map-container {
 	height: 500px;
 	width: 95%;
 	margin: 0 auto;

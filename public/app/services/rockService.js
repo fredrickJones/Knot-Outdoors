@@ -10,12 +10,12 @@ app.service('rockService', function($q, $http, locationService) {
 		var currentMarkers = [];
 		var deferred = $q.defer();
 		locationService.getCoords().then(function(coords) {
-			console.log(coords);
+			// console.log(coords);
 			$http.get('api/rockClimb?lon=' + coords.lon + '&lat=' + coords.lat).then(function(resp) {
-				console.log(resp);
+				// console.log(resp);
 				currentMarkers = [];
 				var markerData = resp.data;
-				function NewMarker(name, lat, lon, difficult, trailHead, id) {
+				function NewMarker(name, lat, lon, difficult, trailHead, id, url) {
 					this.name = name;
 					this.id = id;
 					this.coords = {
@@ -24,12 +24,14 @@ app.service('rockService', function($q, $http, locationService) {
 					};
 					this.difficult = difficult;
 					this.trailHead = trailHead;
+					this.url = url;
 				};
+				var url = 'images/location-marker.png';
 				for (var i = 0; i < markerData.length; i++) {
-					var cragMarker = new NewMarker(markerData[i].name, markerData[i].loc[1], markerData[i].loc[0], markerData[i].difficult, markerData[i].trailHead, i);
+					var cragMarker = new NewMarker(markerData[i].name, markerData[i].loc[1], markerData[i].loc[0], markerData[i].difficult, markerData[i].trailHead, i, url);
 					currentMarkers.push(cragMarker);
 				};
-				console.log("about to resolve")
+				// console.log("about to resolve")
 				deferred.resolve(currentMarkers);
 			},
 			function(err) {
