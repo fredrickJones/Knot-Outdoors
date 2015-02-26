@@ -28,12 +28,13 @@ app.use(Passport.session());
 
 
 // AUTHORIZATION FUNCTIONS
+	// FACEBOOK
 Passport.use(new FacebookStrategy({
 	clientID: env.FACEBOOK.APP_ID,
 	clientSecret: env.FACEBOOK.APP_SECRET,
 	callbackURL: "http://localhost:9099/auth/facebook/callback"
 	}, function(token, refreshToken, profile, done) {
-		userControl.updateOrCreate(profile).then(function(results) {
+		userControl.updateOrCreate({facebookId: profile.id}).then(function(results) {
 			done(null, profile);
 		}, function(err) {
 			done(err, profile);
@@ -47,12 +48,13 @@ app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
 	failureRedirect: '/login', successRedirect: '/#/dashboard'	// <--Successful authentication, redirect to dashboard.
 }));
 
+	// INSTAGRAM
 // Passport.use(new InstagramStrategy({
 // 	clientID: env.INSTAGRAM.CLIENT_ID,
 // 	clientSecret: env.INSTAGRAM.CLIENT_SECRET,
-// 	callbackURL: "http://127.0.0.1:9099/auth/instagram/callback"
+// 	callbackURL: "http://localhost:9099/auth/instagram/callback"
 // 	}, function(accessToken, refreshToken, profile, done) {
-// 		User.findOrCreate({instagramId: profile.id}, function(err, user) {
+// 		userControl.updateOrCreate({instagramId: profile.id}.then(function(err, user) {
 // 			return done(err, user);
 // 	});
 // }));
@@ -60,9 +62,10 @@ app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
 // app.get('/auth/instagram/callback', Passport.authenticate('instagram', {
 // 	failureRedirect: '/login'
 // }), function(req, res) {
-// 	res.redirect('/');	// <--Successful authentication, redirect to dashboard.
+// 	res.redirect('/#/dashboard');	// <--Successful authentication, redirect to dashboard.
 // });
 
+	// TWITTER
 // Passport.use(new TwitterStrategy({
 // 	clientID: env.TWITTER.CONSUMER_KEY,
 // 	clientSecret: env.TWITTER.CONSUMER_SECRET,

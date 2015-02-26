@@ -7,43 +7,96 @@
 	<title>Outdoor Adventures</title>
 
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/styles/simplex.css">
 	<link rel="stylesheet" href="/styles/style.css">
 </head>
 <body ng-app="knotOutdoors" ng-contoller="mainCtrl">
-	<section class="main-container">
-		<div class="header">
-			<div class="header__main-image"></div>
-			<div class="main-logo"></div>
-			<h1>Outdoor Adventures</h1>
-			<h2>within 50 miles</h2>
-		</div>
-		<nav class="flex space-around">
-			<a href="/#/rock-climbing"><button class="btn btn-primary push-left">Rock Climbing</button></a>
-			<a href="/#/login" ng-show="!user"><button class="btn btn-primary push-right">Login</button></a>
-			<button ng-show="user" ng-click="logout()" class="btn btn-warning">Logout</button>
-		</nav>
-		<div class="container">
+	<div class="header__main-image"></div>
+	<!-- <div class="main-logo"></div> -->
+	<!-- <h1>Outdoor Adventures</h1>
+	<h2>within 50 miles</h2> -->
+	<div class="container">
+		<div class="jumbotron">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle Navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">OA</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<!-- <li><a href="/#/camping">Camping</a></li> -->
+							<li><a href="/#/rock-climbing">Rock Climbing</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li data-toggle="modal" data-target="#loginModal" ng-show="user"><a href="#/dashboard">Dashboard</a></li>
+							<li data-toggle="modal" data-target="#loginModal" ng-show="!user"><a href="">Login</a></li>
+							<li data-toggle="modal" data-target="#loginModal" ng-show="user" ng-click="logout()"><a href="#">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 			<ng-view></ng-view>
 		</div>
 	</section>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.min.js"></script>
+	<div id="loginModal" class="modal  fade">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1>Login</h1>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<a href="/auth/facebook" type="submit" class="btn btn-default">Facebook</a>
+							<!-- <a href="/auth/instagram" type="submit" class="btn btn-default">Instagram</a>
+							<a href="/auth/twitter" type="submit" class="btn btn-default">Twitter</a> -->
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="row">
+						<div class="col-md-12">
+							<div data-dismiss="modal" class="btn btn-warning">Cancel</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 <!-- angular -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.12/angular.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.12/angular-route.js"></script>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <!-- maps -->
 <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+
 <!-- app -->
 <script src="/app/main/app.js"></script>
+
 <!-- controllers -->
 <script src="/app/main/mainCtrl.js"></script>
 <script src="/app/views/dashboard/dashboardCtrl.js"></script>
 <script src="/app/views/login/loginCtrl.js"></script>
 <script src="/app/views/rockClimbing/rockCtrl.js"></script>
+
 <!-- services -->
 <script src="/app/services/authService.js"></script>
 <script src="/app/services/dashboardService.js"></script>

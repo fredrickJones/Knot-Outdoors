@@ -36,7 +36,20 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 	$scope.map = {
 		center: center,
 		zoom: 13
-	}
+	};
+
+	$scope.map.options = {
+		scrollwheel: false,
+		mapTypeControlOptions: {
+			mapTypeIds: [google.maps.MapTypeId.TERRAIN]
+		},
+		disableDefaultUI: true,
+		mapTypeId: google.maps.MapTypeId.TERRAIN,
+		zoomControl: true,
+		zoomControlOptions: {
+			style: 'SMALL'
+		}
+	};
 
 	$scope.showWeather = true;
 	$scope.weatherOptions = {
