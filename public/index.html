@@ -17,31 +17,31 @@
 	<!-- <h1>Outdoor Adventures</h1>
 	<h2>within 50 miles</h2> -->
 	<div class="container">
-		<div class="jumbotron">
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle Navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">OA</a>
-					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav navbar-left">
-							<!-- <li><a href="/#/camping">Camping</a></li> -->
-							<li><a href="/#/rock-climbing">Rock Climbing</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li data-toggle="modal" data-target="#loginModal" ng-show="user"><a href="#/dashboard">Dashboard</a></li>
-							<li data-toggle="modal" data-target="#loginModal" ng-show="!user"><a href="">Login</a></li>
-							<li data-toggle="modal" data-target="#loginModal" ng-show="user" ng-click="logout()"><a href="#">Logout</a></li>
-						</ul>
-					</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">OA</a>
 				</div>
-			</nav>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-left">
+						<!-- <li><a href="/#/camping">Camping</a></li> -->
+						<li><a href="/#/rock-climbing">Rock Climbing</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li data-toggle="modal" data-target="#loginModal" ng-show="user"><a href="#/dashboard">Dashboard</a></li>
+						<li data-toggle="modal" data-target="#loginModal" ng-show="!user"><a href="">Login</a></li>
+						<li data-toggle="modal" data-target="#loginModal" ng-show="user" ng-click="logout()"><a href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="jumbotron">
 			<ng-view></ng-view>
 		</div>
 	</section>

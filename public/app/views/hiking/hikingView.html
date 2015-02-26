@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Hiking Trails</h1>
+		<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options">	
+			<ui-gmap-marker ng-repeat="trail in trails" idKey="trail.id" coords="trail.coords" icon="trail.url" click="viewCragData(trail.name, trail.difficult)">
+				<ui-gmap-window options="windowOptions" closeClick="hideCragData" class="slide.ng-enter slide.ng-leave">
+					<div>
+						{{cragName}}, {{cragDifficulty}}
+					</div>
+				</ui-gmap-window>
+			</ui-gmap-marker>
+			<ui-gmap-marker idKey="userPin.id" coords="userPin.coords" icon="userPin.url" click="viewUserLoc(userPin.coords)">
+				<ui-gmap-window options="windowOptions" closeClick="hideUserLoc" class="slide.ng-enter slide.ng-leave">
+					<div>
+						{{userLocation}}
+					</div>
+				</ui-gmap-window>
+			</ui-gmap-marker>
+			<ui-gmap-layer namespace="weather" type="WeatherLayer" show="true"></ui-gmap-layer>
+		</ui-gmap-google-map>
+	</div>
+</div>

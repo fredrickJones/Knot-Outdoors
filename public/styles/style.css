@@ -1,55 +1,5 @@
-/** { outline: 1px solid red; }*/
-
-html {
-	height: 100%;
-	width: 100%;
-}
-
 body {
-	height: 100%;
-	width: 100%;
-	font-family: sans-serif;
 	background: rgba(151, 151, 151, 1);
-}
-
-p {
-	text-align: center;
-	margin: 3px 0;
-	font-size: 17px;
-}
-
-.main-container {
-	width: 75%;
-	margin: 10px auto;
-	padding: 20px;
-	background: rgba(255, 255, 255, 0.86);
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-o-border-radius: 4px;
-	box-shadow: 0 0px 5px rgba(0,0,0,.5);
-}
-
-.main-container h1 {
-	font-weight: bold;
-	font-size: 30px;
-}
-
-.main-container h2 {
-	font-size: 18px;
-	font-weight: normal;
-}
-
-.main-container h3{
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.main-container h1, .main-container h2, .main-container h3 {
-	text-align: center;
-	margin: 5px 0;
-	font-family: Raleway, Helvetica Neue, Helvetica, Arial, Sans Serif;
-	color:#999;
 }
 
 .header__main-image {
@@ -62,6 +12,53 @@ p {
 	background-position: center;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
+}
+
+.navbar {
+	border-radius: 0 0 6px 6px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	-o-border-radius: 0 0 10px 10px;
+	min-height: 50px;
+	margin-bottom: 0px;
+	z-index: 200;
+}
+
+.container .jumbotron {
+	border-radius: 0 0 6px 6px;
+	-webkit-border-radius: 0 0 6px 6px;
+	-moz-border-radius: 0 0 6px 6px;
+	-o-border-radius: 0 0 6px 6px;
+	position: relative;
+	top: -25px;
+	z-index: 100;
+}
+
+.jumbotron {
+	padding-top: 0;
+}
+
+/*-- Address Animation --*/
+.slide.ng-enter, .slide.ng-leave {
+	-webkit-transition: 0.5s linear ease;
+	transition: 0.5s linear ease;
+}
+
+/*-- MAP STUFF --*/
+.view-content {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0 25px;
+}
+
+.angular-google-map-container {
+	height: 500px;
+	width: 99%;
+	margin: 0 auto;
+	margin-top: 1.5%;
+	margin-bottom: 2.5%;
+	border: 3px solid rgba(55, 55, 55, 1);
+	border-radius: 6px;
 }
 
 .main-logo {
@@ -78,121 +75,6 @@ p {
 	-webkit-border-radius: 75px;
 	-moz-border-radius: 75px;
 	-o-border-radius: 75px;
-}
-
-.main-nav {
-	align-items: center;
-	margin: 10px;
-	padding: 15px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.main-nav .nav-item {
-	text-align: center;
-	padding: 15px;
-	text-decoration: none;
-	color: #3d3d3b;
-}
-
-.container {
-	text-align: center;
-	width: 100%;
-	margin: 0 auto;
-}
-
-.row {
-	margin: 0 auto;
-	width: 100%;
-}
-
-.flex-box {
-	padding: 15px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.list {
-	float: left;
-	width: 45%;
-	margin: 20px;
-	min-height: 200px;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-o-border-radius: 4px;
-	box-shadow: 0 0px 5px rgba(0,0,0,.5);
-}
-
-.person {
-	width: 90%;
-	margin: 5px auto;
-	min-height: 20px;
-	background: rgba(255, 255, 255, .85);
-	display: block;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-o-border-radius: 4px;
-	box-shadow: 0 0px 5px rgba(0,0,0,.5);
-	cursor: pointer;
-}
-
-.person-name {
-	text-align: left;
-	width: 60%;
-	float: left;
-	margin: 5px;
-	line-height: 22px;
-	font-size: 14px;
-	font-weight: lighter;
-}
-
-.person-address {
-	text-align: left;
-	margin: 5px;
-	line-height: 22px;
-	font-size: 14px;
-	font-weight: lighter;
-}
-
-.person-button {
-	margin: 5px 5px 5px 0;
-	font-weight: lighter;
-}
-
-/*-- Address Animation --*/
-.slide.ng-enter, .slide.ng-leave {
-  -webkit-transition:0.5s linear ease;
-  transition:0.5s linear ease;
-}
-
-/*-- extra stuff --*/
-.view-content {
-	width: 80%;
-	margin: 0 auto;
-	padding: 0 25px;
-
-}
-
-.angular-google-map-container {
-	height: 500px;
-	width: 95%;
-	margin: 0 auto;
-	margin-top: 2.5%;
-	margin-bottom: 2.5%;
-	border: 3px solid rgba(55, 55, 55, 1);
-}
-
-.pin-data {
-	/*height: 200px;*/
-	width: 95%;
-	margin: 0 auto;
-	margin-top: 2.5%;
-	margin-bottom: 2.5%;
-	border: 3px solid rgba(55, 55, 55, 1);
 }
 
 
