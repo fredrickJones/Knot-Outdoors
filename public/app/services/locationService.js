@@ -7,17 +7,6 @@ app.service('locationService', function($q, $http, uiGmapGoogleMapApi) {
 		// console.log("in service");
 		var centerDfd = $q.defer();
 		navigator.geolocation.getCurrentPosition(function(position) {
-			// console.log(position.coords);
-			// userMarker = [];
-			// function UserMarker(lat, lon, id, url) {
-			// 	this.id = id;
-			// 	this.coords = {
-			// 		latitude: lat,
-			// 		longitude: lon
-			// 	};
-			// 	this.url = url;
-			// 	userMarker.push(UserMarker);
-			// };
 			centerDfd.resolve(
 				{
 					lat: position.coords.latitude,

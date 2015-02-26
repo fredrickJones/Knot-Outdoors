@@ -5,12 +5,17 @@
 	<ui-gmap-marker ng-repeat="crag in crags" idKey="crag.id" coords="crag.coords" icon="crag.url" click="viewCragData(crag.name, crag.difficult)">
 		<ui-gmap-window options="windowOptions" closeClick="hideCragData">
 			<div>
-				{{cragName}}
-				{{cragDifficulty}}
+				{{cragName}}, {{cragDifficulty}}
 			</div>
 		</ui-gmap-window>
 	</ui-gmap-marker>
-	<ui-gmap-marker idKey="userPin.id" coords="userPin.coords" icon="userPin.url"></ui-gmap-marker>
+	<ui-gmap-marker idKey="userPin.id" coords="userPin.coords" icon="userPin.url" click="viewUserLoc(userPin.coords)">
+		<ui-gmap-window options="windowOptions" closeClick="hideUserLoc">
+			<div>
+				{{userLocation}}
+			</div>
+		</ui-gmap-window>
+	</ui-gmap-marker>
 	<!-- <ui-gmap-layer namespace="weather" type="WeatherLayer" show="true"></ui-gmap-layer> -->
 </ui-gmap-google-map>
 

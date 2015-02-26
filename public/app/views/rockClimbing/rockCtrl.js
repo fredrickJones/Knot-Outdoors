@@ -26,12 +26,12 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 	$scope.hideCragData = function() {
 		$scope.windowOptions.visible = false;
 	};
-	$scope.title = "Window Title!";
-	// $scope.viewCragData = function() {
-	// 	// console.log($scope.rockClimbing);
-	// 	$scope.name = name;
-	// 	$scope.difficulty = diff;
-	// };
+	$scope.viewUserLoc = function(location) {
+		$scope.userLocation = location;
+	};
+	$scope.hideUserLoc = function() {
+		$scope.windowOptions.visible = false;
+	};
 
 	$scope.map = {
 		center: center,
