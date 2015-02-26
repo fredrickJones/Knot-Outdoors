@@ -2,9 +2,9 @@
 var app = angular.module('knotOutdoors');
 
 app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService) {
-	$scope.crag = {
-		loc: []
-	};
+	// $scope.crag = {
+	// 	loc: []
+	// };
 
 	$scope.sumbitted = false;
 	$scope.addNewCrag = function(cragData) {

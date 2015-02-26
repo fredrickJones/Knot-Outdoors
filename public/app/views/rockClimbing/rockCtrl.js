@@ -1,11 +1,11 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('rockCtrl', function($q, $scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {
+app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {
 	$scope.crags = crags;
 	// console.log(crags);
 	$scope.map = center;
-	console.log(center);
+	// console.log(center);
 	$scope.userPin = {
 		id: "user",
 		coords: {
@@ -13,15 +13,25 @@ app.controller('rockCtrl', function($q, $scope, rockService, locationService, ui
 			longitude: center.longitude
 		},
 		url: 'images/user-marker.png'
-	}
-
-	$scope.viewCragData = function(name, lat, lon, diff) {
-		// console.log($scope.rockClimbing);
-		$scope.name = name;
-		$scope.difficulty = diff;
-		$scope.latitude = lat;
-		$scope.longitude = lon;
 	};
+
+	$scope.windowOptions = {
+		visible: false
+	};
+
+	$scope.viewCragData = function(name, difficulty) {
+		$scope.cragName = name;
+		$scope.cragDifficulty = difficulty;
+	};
+	$scope.hideCragData = function() {
+		$scope.windowOptions.visible = false;
+	};
+	$scope.title = "Window Title!";
+	// $scope.viewCragData = function() {
+	// 	// console.log($scope.rockClimbing);
+	// 	$scope.name = name;
+	// 	$scope.difficulty = diff;
+	// };
 
 	$scope.map = {
 		center: center,
