@@ -5,6 +5,7 @@ var User = require('./../models/userModel');
 
 module.exports = {
 	updateOrCreate: function(user){
+		// console.log(user);
 		var deferred = Q.defer();
 		User.findOne({ facebookId: user.id }, function(err, results){
 			if(err) return deferred.reject(err);

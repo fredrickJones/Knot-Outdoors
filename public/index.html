@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/styles/simplex.css">
 	<link rel="stylesheet" href="/styles/style.css">
 </head>
-<body ng-app="knotOutdoors" ng-contoller="mainCtrl">
+<body ng-app="knotOutdoors" ng-controller="mainCtrl">
 	<div class="header__main-image"></div>
 	<!-- <div class="main-logo"></div> -->
 	<!-- <h1>Outdoor Adventures</h1>
@@ -26,7 +26,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">OA</a>
+					<a class="navbar-brand" href="#/">OA</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-left">
@@ -34,9 +34,9 @@
 						<li><a href="/#/rock-climbing">Rock Climbing</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li data-toggle="modal" data-target="#loginModal" ng-show="user"><a href="#/dashboard">Dashboard</a></li>
+						<li ng-show="user"><a href="#/dashboard">Dashboard</a></li>
 						<li data-toggle="modal" data-target="#loginModal" ng-show="!user"><a href="">Login</a></li>
-						<li data-toggle="modal" data-target="#loginModal" ng-show="user" ng-click="logout()"><a href="#">Logout</a></li>
+						<li ng-show="user"><a href="/api/logout">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -94,8 +94,8 @@
 <!-- controllers -->
 <script src="/app/main/mainCtrl.js"></script>
 <script src="/app/views/dashboard/dashboardCtrl.js"></script>
-<script src="/app/views/login/loginCtrl.js"></script>
 <script src="/app/views/rockClimbing/rockCtrl.js"></script>
+<script src="/app/views/home/homeCtrl.js"></script>
 
 <!-- services -->
 <script src="/app/services/authService.js"></script>

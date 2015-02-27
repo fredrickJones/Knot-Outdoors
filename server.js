@@ -34,7 +34,7 @@ Passport.use(new FacebookStrategy({
 	clientSecret: env.FACEBOOK.APP_SECRET,
 	callbackURL: "http://localhost:9099/auth/facebook/callback"
 	}, function(token, refreshToken, profile, done) {
-		userControl.updateOrCreate({facebookId: profile.id}).then(function(results) {
+		userControl.updateOrCreate(profile).then(function(results) {
 			done(null, profile);
 		}, function(err) {
 			done(err, profile);
@@ -45,7 +45,7 @@ app.get('/auth/facebook', Passport.authenticate('facebook'), function(req, res) 
 	return res.status(200).end();
 });
 app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
-	failureRedirect: '/login', successRedirect: '/#/dashboard'	// <--Successful authentication, redirect to dashboard.
+	failureRedirect: '/rock-climbing', successRedirect: '/#/dashboard'	// <--Successful authentication, redirect to dashboard.
 }));
 
 	// INSTAGRAM
@@ -112,6 +112,14 @@ app.get('/api/user/:id', isAuthed, userControl.getUser);
 
 app.post('/api/rockClimb', isAuthed, rockControl.create);
 app.get('/api/rockClimb', rockControl.getCrags);
+
+app.get('/api/currentUser', function(req, res) {
+	res.status(200).json(req.user);
+});
+app.get('/api/logout', function(req, res) {
+	req.logout();
+	res.redirect('/');
+});
 
 
 // CONNECTIONS

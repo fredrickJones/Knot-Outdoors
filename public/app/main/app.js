@@ -3,17 +3,18 @@ var app = angular.module('knotOutdoors', ['ngRoute', 'uiGmapgoogle-maps']);
 
 app.config(function($routeProvider) {
 	$routeProvider
-		// .when('/', {
-		// 	templateUrl: './app/views/home/homeView.html',
-		// 	controller: 'homeCtrl'
-		// })
-		.when('/login', {
-			templateUrl: './app/views/login/loginView.html',
-			controller: 'loginCtrl'
+		.when('/', {
+			templateUrl: './app/views/home/homeView.html',
+			controller: 'homeCtrl'
 		})
 		.when('/dashboard', {
 			templateUrl: './app/views/dashboard/dashboardView.html',
-			controller: 'dashboardCtrl'
+			controller: 'dashboardCtrl',
+			resolve: {
+				user: function(loginService) {
+					return loginService.returnUser();
+				}
+			}
 		})
 		.when('/rock-climbing', {
 			templateUrl: './app/views/rockClimbing/rockView.html',
@@ -24,13 +25,13 @@ app.config(function($routeProvider) {
 					return rockService.getNear();
 				},
 				center: function(locationService, $q){
-					var dfd = $q.defer()
+					var deferred = $q.defer()
 					locationService.getCoords().then(function(coords){
 						coords.latitude = coords.lat;
 						coords.longitude = coords.lon;
-						dfd.resolve(coords);
+						deferred.resolve(coords);
 					})
-					return dfd.promise;
+					return deferred.promise;
 				}
 			}
 		})
@@ -52,7 +53,7 @@ app.config(function($routeProvider) {
 		// 	controller: 'fishingCtrl'
 		// })
 		.otherwise({
-			redirectTo: '/rock-climbing'
+			redirectTo: '/'
 		});
 });
 
