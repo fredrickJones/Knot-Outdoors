@@ -32,9 +32,23 @@ body {
 	-moz-border-radius: 0 0 6px 6px;
 	-o-border-radius: 0 0 6px 6px;
 }
+/*
+.camping-well {
+	background: url(../images/camping-main-img.jpg) no-repeat;
+}*/
 
-.modal {
-	
+.well img {
+	width: 100%;
+}
+
+.well h3 {
+	text-align: left;
+	text-transform: uppercase;
+}
+.well p {
+	font-size: 15px;
+	text-align: center;
+	text-transform: uppercase;
 }
 
 /*-- Address Animation --*/
