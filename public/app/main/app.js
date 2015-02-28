@@ -1,7 +1,7 @@
 'use strict';
-var app = angular.module('knotOutdoors', ['ngRoute', 'uiGmapgoogle-maps']);
+var app = angular.module('knotOutdoors', ['ngRoute', 'uiGmapgoogle-maps'/*, '$locationProvider'*/]);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider/*, $location*/) {
 	$routeProvider
 		.when('/', {
 			templateUrl: './app/views/home/homeView.html',
@@ -13,7 +13,10 @@ app.config(function($routeProvider) {
 			resolve: {
 				user: function(loginService) {
 					return loginService.returnUser();
-				}
+				}//,
+				// loginRequired: function(loginService) {
+				// 	return loginService.loginRequired();
+				// }
 			}
 		})
 		.when('/rock-climbing', {

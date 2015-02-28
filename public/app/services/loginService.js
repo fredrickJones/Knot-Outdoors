@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.service('loginService', function($http, $rootScope) {
+app.service('loginService', function($q, $http, $rootScope, $location) {
 	var user = '';
 
 	this.getUser = function() {
@@ -17,17 +17,16 @@ app.service('loginService', function($http, $rootScope) {
 		return user;
 	};
 
-// THIS IS FROM CAHLAN'S MY-TODOS
-	// this.updateUser = function(){
-	// 	$http.get('/auth/me').then(function(res) {
-	// 		user = res.data;
-	// 		// console.log('User updated: ', user);
-	// 		return user;
-	// 	})
-	// };
+	// this.loginRequired = function() {
+	// 	var deferred = $q.defer();
 
-	// this.getUser = function() {
-	// 	return user;
+	// 	if(!userIsAuthenticated()) {
+	// 		deferred.reject();
+	// 		$location.path('/')
+	// 	} else {
+	// 		deferred.resolve();
+	// 	}
+	// 	return deferred.promise;
 	// };
 });
 
