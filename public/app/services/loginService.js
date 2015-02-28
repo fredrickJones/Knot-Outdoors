@@ -14,20 +14,11 @@ app.service('loginService', function($q, $http, $rootScope, $location) {
 	this.getUser();
 
 	this.returnUser = function() {
+		if(!user){
+			$location.path('/');
+		}
 		return user;
 	};
-
-	// this.loginRequired = function() {
-	// 	var deferred = $q.defer();
-
-	// 	if(!userIsAuthenticated()) {
-	// 		deferred.reject();
-	// 		$location.path('/')
-	// 	} else {
-	// 		deferred.resolve();
-	// 	}
-	// 	return deferred.promise;
-	// };
 });
 
 

@@ -45,8 +45,9 @@ app.get('/auth/facebook', Passport.authenticate('facebook'), function(req, res) 
 	return res.status(200).end();
 });
 app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
-	failureRedirect: '/rock-climbing', successRedirect: '/#/dashboard'	// <--Successful authentication, redirect to dashboard.
-}));
+	failureRedirect: '/'}), function(req, res) {
+	res.redirect('/#/dashboard')	// <--Successful authentication, redirect to dashboard.
+});
 
 	// INSTAGRAM
 // Passport.use(new InstagramStrategy({
