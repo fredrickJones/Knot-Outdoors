@@ -5,7 +5,6 @@ body {
 .header__main-image {
 	height: 285px;
 	background: #ccc;
-	margin: -20px -20px 0 -20px;
 	box-shadow: inset 0 -100px 100px -100px rgba(0,0,0,.5);
 	background: url(../images/main-img.jpg) no-repeat;
 	background-size: cover;
@@ -49,6 +48,10 @@ body {
 	font-size: 15px;
 	text-align: center;
 	text-transform: uppercase;
+}
+
+.required {
+	color: rgba(126, 0, 189, 1);
 }
 
 /*-- Address Animation --*/

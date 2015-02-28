@@ -41,7 +41,16 @@ app.config(function($routeProvider) {
 		// 	resolve: {
 		// 		sites: function(campService) {
 		// 			return campService.getNear();
-		// 		}
+		// 		},
+				// center: function(locationService, $q){
+				// 	var deferred = $q.defer()
+				// 	locationService.getCoords().then(function(coords){
+				// 		coords.latitude = coords.lat;
+				// 		coords.longitude = coords.lon;
+				// 		deferred.resolve(coords);
+				// 	})
+				// 	return deferred.promise;
+				// }
 		// 	}
 		// })
 		// .when('/hiking', {
