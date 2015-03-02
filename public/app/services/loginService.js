@@ -14,9 +14,9 @@ app.service('loginService', function($q, $http, $rootScope, $location) {
 	this.getUser();
 
 	this.returnUser = function() {
-		if(!user){
-			$location.path('/');
-		}
+		// if(!user){
+		// 	$location.path('/');
+		// }
 		return user;
 	};
 });
