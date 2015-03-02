@@ -13,7 +13,7 @@ var env = require('./serverAssets/env'),
 	rockControl = require('./serverAssets/controllers/rockControl');
 
 var app = Express();
-var port = process.env.EXPRESS_PORT || 9099;
+var port = 80; //process.env.EXPRESS_PORT || 9099;
 var mongoURI = 'localhost/outdoors';
 
 Mongoose.connect(mongoURI);
