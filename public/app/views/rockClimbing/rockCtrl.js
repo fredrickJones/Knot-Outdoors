@@ -35,7 +35,7 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 
 	$scope.map = {
 		center: center,
-		zoom: 13
+		zoom: 12
 	};
 
 	$scope.map.options = {

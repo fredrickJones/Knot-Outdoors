@@ -2,17 +2,13 @@
 var app = angular.module('knotOutdoors');
 
 app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService) {
-	// $scope.crag = {
-	// 	loc: []
-	// };
-
-	$scope.sumbitted = false;
+	$scope.submitted = false;
 	$scope.addNewCrag = function(cragData) {
-		// console.log(cragData);
+		console.log('bad news bears');
 		if ($scope.crag_form.$valid) {
 			rockService.addCrag(cragData);
 		} else {
-			$scope.crag_form.sumbitted = true;
+			$scope.crag_form.submitted = true;
 		}
 	};
 

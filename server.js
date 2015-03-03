@@ -13,7 +13,7 @@ var env = require('./serverAssets/env'),
 	rockControl = require('./serverAssets/controllers/rockControl');
 
 var app = Express();
-var port = 9099; //process.env.EXPRESS_PORT || 9099;
+var port = process.env.EXPRESS_PORT || 9099;
 var mongoURI = 'localhost/outdoors';
 
 Mongoose.connect(mongoURI);
@@ -30,9 +30,9 @@ app.use(Passport.session());
 // AUTHORIZATION FUNCTIONS
 	// FACEBOOK
 Passport.use(new FacebookStrategy({
-	clientID: env.FACEBOOK.APP_ID,
-	clientSecret: env.FACEBOOK.APP_SECRET,
-	callbackURL: "http://localhost:9099/auth/facebook/callback"
+	clientID: process.env.FACEBOOK_ID,
+	clientSecret: process.env.FACEBOOK_SECRET,
+	callbackURL: process.env.FACEBOOK_CB || "http://localhost:9099/auth/facebook/callback"
 	}, function(token, refreshToken, profile, done) {
 		userControl.updateOrCreate(profile).then(function(results) {
 			done(null, profile);
