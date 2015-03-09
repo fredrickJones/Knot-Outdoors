@@ -30,8 +30,8 @@ app.use(Passport.session());
 // AUTHORIZATION FUNCTIONS
 	// FACEBOOK
 Passport.use(new FacebookStrategy({
-	clientID: process.env.FACEBOOK_ID,
-	clientSecret: process.env.FACEBOOK_SECRET,
+	clientID: process.env.FACEBOOK_ID || env.FACEBOOK.APP_ID,
+	clientSecret: process.env.FACEBOOK_SECRET || env.FACEBOOK.APP_SECRET,
 	callbackURL: process.env.FACEBOOK_CB || "http://localhost:9099/auth/facebook/callback"
 	}, function(token, refreshToken, profile, done) {
 		userControl.updateOrCreate(profile).then(function(results) {

@@ -3,6 +3,7 @@ var app = angular.module('knotOutdoors');
 
 app.service('rockService', function($q, $http, locationService) {
 	this.addCrag = function(cragData) {
+		// console.log(cragData);
 		$http.post('/api/rockClimb', cragData);
 	};
 
