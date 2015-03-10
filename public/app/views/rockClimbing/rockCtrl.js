@@ -14,6 +14,10 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 		},
 		url: 'images/user-marker.png'
 	};
+	
+	var updateCrags = function(crags) {
+		$scope.crags = crags;
+	};
 
 	$scope.windowOptions = {
 		visible: false
