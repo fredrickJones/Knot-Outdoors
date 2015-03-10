@@ -14,7 +14,7 @@ var env = require('./serverAssets/env'),
 
 var app = Express();
 var port = process.env.EXPRESS_PORT || 9099;
-var mongoURI = 'localhost/outdoors,192.241.211.18/outdoors';
+var mongoURI = 'localhost/outdoors';
 
 Mongoose.connect(mongoURI);
 

@@ -32,7 +32,7 @@ app.service('rockService', function($q, $http, locationService) {
 					var cragMarker = new NewMarker(markerData[i].name, markerData[i].loc[1], markerData[i].loc[0], markerData[i].difficult, markerData[i].trailHead, i, url);
 					currentMarkers.push(cragMarker);
 				};
-				// console.log("about to resolve")
+				console.log(currentMarkers);
 				deferred.resolve(currentMarkers);
 			},
 			function(err) {
