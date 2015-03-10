@@ -3,13 +3,11 @@ body {
 }
 
 .header__main-image {
-	height: 285px;
+	height: 200px;
 	background: #ccc;
 	box-shadow: inset 0 -100px 100px -100px rgba(0,0,0,.5);
 	background-size: cover;
 	background-position: center;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
 }
 
 .navbar {
@@ -51,6 +49,10 @@ body {
 
 .required {
 	color: rgba(126, 0, 189, 1);
+}
+
+.login-btn {
+	padding-bottom: 20px;
 }
 
 /*-- Address Animation --*/
