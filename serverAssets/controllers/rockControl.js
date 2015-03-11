@@ -21,7 +21,8 @@ module.exports = {
 		Crag.find({
 			coords: {
 				$near: [Number(req.query.lon), Number(req.query.lat)],
-				$maxDistance: 0.25
+				$minDistance: 0.0,
+				$maxDistance: 0.35
 			}
 		}, function(err, response) {
 				if(err) {

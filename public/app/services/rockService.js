@@ -11,9 +11,9 @@ app.service('rockService', function($q, $http, locationService) {
 		var currentMarkers = [];
 		var deferred = $q.defer();
 		locationService.getCoords().then(function(coords) {
-			// console.log(coords);
+			console.log(coords);
 			$http.get('api/rockClimb?lon=' + coords.lon + '&lat=' + coords.lat).then(function(resp) {
-				// console.log(resp);
+				console.log(resp);
 				currentMarkers = [];
 				var markerData = resp.data;
 				function NewMarker(name, lat, lon, difficult, trailHead, id, url) {
@@ -40,7 +40,7 @@ app.service('rockService', function($q, $http, locationService) {
 					);
 					currentMarkers.push(cragMarker);
 				};
-				// console.log(currentMarkers);
+				console.log(currentMarkers);
 				deferred.resolve(currentMarkers);
 			}).catch(function(err) {
 				deferred.reject(err);

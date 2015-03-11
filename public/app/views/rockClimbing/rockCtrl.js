@@ -27,7 +27,8 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 		$scope.windowOptions.visible = false;
 	};
 	$scope.viewUserLoc = function(location) {
-		$scope.userLocation = location;
+		$scope.userLongitude = location.latitude;
+		$scope.userLongitude = location.longitude;
 	};
 	$scope.hideUserLoc = function() {
 		$scope.windowOptions.visible = false;
