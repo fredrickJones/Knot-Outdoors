@@ -5,7 +5,7 @@ module.exports = {
 	create: function(req, res){
 		var coords = [req.body.loc[0], req.body.loc[1]];
 		req.body.loc = coords;
-		// console.log(req.body);
+		console.log(req.body);
 		var newCrag = new Crag(req.body);
 		newCrag.save(function(err, crag) {
 			if(err) {
