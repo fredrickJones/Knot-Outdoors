@@ -29,7 +29,15 @@ app.service('rockService', function($q, $http, locationService) {
 				};
 				var url = 'images/location-marker.png';
 				for (var i = 0; i < markerData.length; i++) {
-					var cragMarker = new NewMarker(markerData[i].name, markerData[i].coords[1], markerData[i].coords[0], markerData[i].difficult, markerData[i].trailHead, i, url);
+					var cragMarker = new NewMarker(
+						markerData[i].name,
+						markerData[i].coords[1],
+						markerData[i].coords[0],
+						markerData[i].difficult,
+						markerData[i].trailHead,
+						i,
+						url
+					);
 					currentMarkers.push(cragMarker);
 				};
 				// console.log(currentMarkers);
