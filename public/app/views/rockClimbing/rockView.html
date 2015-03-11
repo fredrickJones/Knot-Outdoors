@@ -5,7 +5,7 @@
 		</div>
 		<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options">	
 			<ui-gmap-marker ng-repeat="crag in crags" idKey="crag.id" coords="crag.coords" icon="crag.url" click="viewCragData(crag.name, crag.difficult)">
-				<ui-gmap-window options="windowOptions" closeClick="hideCragData" class="slide.ng-enter slide.ng-leave">
+				<ui-gmap-window options="windowOptions" closeClick="hideCragData" class="slide.ng-enter slide.ng-leave window-style">
 					<div>
 						{{cragName}}, {{cragDifficulty}}
 					</div>

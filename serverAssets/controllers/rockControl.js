@@ -3,7 +3,7 @@ var Crag = require('./../models/rockModel');
 
 module.exports = {
 	create: function(req, res){
-		var coords = [req.body.loc[0], req.body.loc[1]];
+		var coords = [req.body.lon, req.body.lat];
 		req.body.loc = coords;
 		console.log(req.body);
 		var newCrag = new Crag(req.body);
@@ -19,7 +19,7 @@ module.exports = {
 	getCrags: function(req, res) {
 		// console.log(req.query);
 		Crag.find({
-			loc: {
+			coords: {
 				$near: [Number(req.query.lon), Number(req.query.lat)],
 				$maxDistance: 0.5
 			}
