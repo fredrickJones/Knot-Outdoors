@@ -125,10 +125,10 @@ app.get('/api/logout', function(req, res) {
 
 // CONNECTIONS
 Mongoose.connection.once('open', function(){
-	console.log('connected to mongoDB via ' + mongoURI);
+	// console.log('connected to mongoDB via ' + mongoURI);
 });
 app.listen(port, function() {
-	console.log('listening on port ' + port);
+	// console.log('listening on port ' + port);
 });
 
 

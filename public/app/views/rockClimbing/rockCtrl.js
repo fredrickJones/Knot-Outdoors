@@ -3,7 +3,7 @@ var app = angular.module('knotOutdoors');
 
 app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {
 	$scope.crags = crags;
-	console.log(crags);
+	// console.log(crags);
 	$scope.map = center;
 	// console.log(center);
 	$scope.userPin = {

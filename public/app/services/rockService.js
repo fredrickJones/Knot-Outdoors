@@ -34,8 +34,7 @@ app.service('rockService', function($q, $http, locationService) {
 				};
 				// console.log(currentMarkers);
 				deferred.resolve(currentMarkers);
-			},
-			function(err) {
+			}).catch(function(err) {
 				deferred.reject(err);
 			});
 		});
