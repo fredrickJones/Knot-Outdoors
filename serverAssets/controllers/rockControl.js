@@ -17,7 +17,7 @@ module.exports = {
 		});
 	},
 	getCrags: function(req, res) {
-		console.log(req.query);
+		// console.log(req.query);
 		Crag.find({
 			// loc: [-111.666271, 40.450810]
 			loc: {
@@ -29,7 +29,7 @@ module.exports = {
 					// console.log(err);
 					return res.status(500).json(err);
 				} else {
-					console.log(response);
+					// console.log(response);
 					res.status(200).json(response);
 				}
 		}).limit(100);
