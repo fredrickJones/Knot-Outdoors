@@ -4,13 +4,14 @@ var Express = require('express'),
 	BodyParser = require('body-parser'),
 	Passport = require('passport'),
 	FacebookStrategy = require('passport-facebook').Strategy,
-	// InstagramStrategy = require('passport-instagram').Strategy,
-	// TwitterStrategy = require('passport-twitter').Strategy,
+	InstagramStrategy = require('passport-instagram').Strategy,
+	TwitterStrategy = require('passport-twitter').Strategy,
 	Mongoose = require('mongoose');
 
 var env = require('./serverAssets/env'),
 	userControl = require('./serverAssets/controllers/userControl'),
-	rockControl = require('./serverAssets/controllers/rockControl');
+	rockControl = require('./serverAssets/controllers/rockControl'),
+	campControl = require('./serverAssets/controllers/campControl');
 
 var app = Express();
 var port = process.env.EXPRESS_PORT || 9099;
@@ -50,38 +51,42 @@ app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
 });
 
 	// INSTAGRAM
-// Passport.use(new InstagramStrategy({
-// 	clientID: env.INSTAGRAM.CLIENT_ID,
-// 	clientSecret: env.INSTAGRAM.CLIENT_SECRET,
-// 	callbackURL: "http://localhost:9099/auth/instagram/callback"
-// 	}, function(accessToken, refreshToken, profile, done) {
-// 		userControl.updateOrCreate({instagramId: profile.id}.then(function(err, user) {
-// 			return done(err, user);
-// 	});
-// }));
-// app.get('/auth/instagram', Passport.authenticate('instagram'));
-// app.get('/auth/instagram/callback', Passport.authenticate('instagram', {
-// 	failureRedirect: '/login'
-// }), function(req, res) {
-// 	res.redirect('/#/dashboard');	// <--Successful authentication, redirect to dashboard.
-// });
+Passport.use(new InstagramStrategy({
+	clientID: process.env.INSTAGRAM_ID || env.INSTAGRAM.CLIENT_ID,
+	clientSecret: process.env.INSTAGRAM_SECRET || env.INSTAGRAM.CLIENT_SECRET,
+	callbackURL: process.env.INSTAGRAM_CB || "http://127.0.0.1:9099/auth/instagram/callback"
+	}, function(accessToken, refreshToken, profile, done) {
+		userControl.updateOrCreate(profile).then(function(results) {
+			done(null, profile);
+		}, function(err) {
+			done(err, profile);
+		}
+	);
+}));
+app.get('/auth/instagram', Passport.authenticate('instagram'));
+app.get('/auth/instagram/callback', Passport.authenticate('instagram', {
+	successRedirect: '/#/dashboard',	// <--Successful authentication, redirect to dashboard.
+	failureRedirect: '/'
+}));
 
 	// TWITTER
-// Passport.use(new TwitterStrategy({
-// 	clientID: env.TWITTER.CONSUMER_KEY,
-// 	clientSecret: env.TWITTER.CONSUMER_SECRET,
-// 	callbackURL: "http://127.0.0.1:9099/auth/twitter/callback"
-// 	}, function(accessToken, refreshToken, profile, done) {
-// 		User.findOrCreate({twitterId: profile.id}, function(err, user) {
-// 			return done(err, user);
-// 	});
-// }));
-// app.get('/auth/twitter', Passport.authenticate('twitter'));
-// app.get('/auth/twitter/callback', Passport.authenticate('twitter', {
-// 	failureRedirect: '/login'
-// }), function(req, res) {
-// 	res.redirect('/');	// <--Successful authentication, redirect to dashboard.
-// });
+Passport.use(new TwitterStrategy({
+	consumerKey: process.env.TWITTER_KEY || env.TWITTER.CONSUMER_KEY,
+	consumerSecret: process.env.TWITTER_SECRET || env.TWITTER.CONSUMER_SECRET,
+	callbackURL: "http://127.0.0.1:9099/auth/twitter/callback"
+	}, function(token, tokenSecret, profile, done) {
+		User.findOrCreate(profile).then(function(results) {
+			console.log(results);
+			done(null, profile);
+		}, function(err) {
+			done(err, profile);
+	});
+}));
+app.get('/auth/twitter', Passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', Passport.authenticate('twitter', {
+	successRedirect: '/#/dashboard',	// <--Successful authentication, redirect to dashboard.
+	failureRedirect: '/'
+}));
 
 
 // PASSPORT
@@ -113,6 +118,15 @@ app.get('/api/user/:id', isAuthed, userControl.getUser);
 
 app.post('/api/rockClimb', isAuthed, rockControl.create);
 app.get('/api/rockClimb', rockControl.getCrags);
+
+// app.post('/api/hiking', isAuthed, rockControl.create);
+// app.get('/api/hiking', rockControl.getCrags);
+
+app.post('/api/camping', isAuthed, campControl.create);
+app.get('/api/camping', campControl.getSites);
+
+// app.post('/api/fishing', isAuthed, rockControl.create);
+// app.get('/api/fishing', rockControl.getCrags);
 
 app.get('/api/currentUser', function(req, res) {
 	res.status(200).json(req.user);

@@ -35,24 +35,24 @@ app.config(function($routeProvider) {
 				}
 			}
 		})
-		// .when('/camping', {
-		// 	temlateUrl: './app/views/camping/camping.html',
-		// 	controller: 'campingCtrl',
-		// 	resolve: {
-		// 		sites: function(campService) {
-		// 			return campService.getNear();
-		// 		},
-				// center: function(locationService, $q){
-				// 	var deferred = $q.defer()
-				// 	locationService.getCoords().then(function(coords){
-				// 		coords.latitude = coords.lat;
-				// 		coords.longitude = coords.lon;
-				// 		deferred.resolve(coords);
-				// 	})
-				// 	return deferred.promise;
-				// }
-		// 	}
-		// })
+		.when('/camping', {
+			temlateUrl: './app/views/camping/campingView.html',
+			controller: 'campingCtrl',
+			resolve: {
+				sites: function(campService) {
+					return campService.getNear();
+				},
+				center: function(locationService, $q){
+					var deferred = $q.defer()
+					locationService.getCoords().then(function(coords){
+						coords.latitude = coords.lat;
+						coords.longitude = coords.lon;
+						deferred.resolve(coords);
+					})
+					return deferred.promise;
+				}
+			}
+		})
 		// .when('/hiking', {
 		// 	temlateUrl: '/temlate/hiking.html',
 		// 	controller: 'hikingCtrl'

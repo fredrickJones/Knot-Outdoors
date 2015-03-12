@@ -29,7 +29,7 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 	$scope.viewUserLoc = function(location) {
 		// console.log(location);
 		$scope.userCoordsLat = location.latitude;
-		$scope.userCoordsLon = location.longitude; //.latitude && location.longitude;
+		$scope.userCoordsLon = location.longitude;
 	};
 	$scope.hideUserLoc = function() {
 		$scope.windowOptions.visible = false;

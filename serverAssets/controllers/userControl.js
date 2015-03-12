@@ -7,12 +7,11 @@ module.exports = {
 	updateOrCreate: function(user){
 		// console.log(user);
 		var deferred = Q.defer();
-		User.findOne({ facebookId: user.id }, function(err, results){
+		User.findOne({ id: user.id }, function(err, results){
 			if(err) return deferred.reject(err);
 			if(results){
 				User.update({ _id: results._id }, {
 					name: user.displayName,
-					// picture: user._json.picture,
 					gender: user._json.gender
 				}, function(err, results){
 					if(err){
@@ -23,10 +22,11 @@ module.exports = {
 				});
 			} else {
 				User.create({
-					facebookId: user.id,
+					provider: user.provider,
+					id: user.id,
 					name: user.displayName,
-					// picture: user._json.picture,
-					gender: user._json.gender
+					gender: user._json.gender,
+					locale: user.locale
 				}, function(err, results){
 					if(err){
 						return deferred.reject(err);
@@ -40,7 +40,7 @@ module.exports = {
 	},
 	getUser: function(id){
 		var deferred = Q.defer();
-		User.findOne({ facebookId: id }, function(err, results){
+		User.findOne({ id: id }, function(err, results){
 			if(err){
 				deferred.reject(err);
 			} else {
@@ -53,7 +53,7 @@ module.exports = {
 		delete req.body._id;
 		console.log(req.body)
 		User.update({ _id: req.params.id }, req.body, function(err, results){
-			console.log(err, results);
+			// console.log(err, results);
 			if(err){
 				res.status(500).json(err);
 			} else {

@@ -17,6 +17,21 @@ app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService
 	// $scope.crag.trailHead = '';
 	// $scope.crag.difficult = '';
 	};
+
+	$scope.addNewSite = function(siteData) {
+		// console.log(siteData);
+		// campService.addSite(siteData);
+		if ($scope.crag_form.$valid) {
+			campService.addSite(siteData);
+		} else {
+			$scope.site_form.submitted = true;
+		}
+	// $scope.site.name = '';
+	// $scope.site.loc[1] = '';
+	// $scope.site.loc[0] = '';
+	// $scope.site.trailHead = '';
+	// $scope.site.price = '';
+	};
 });
 
 // app.directive('ngFocus', [function() {
