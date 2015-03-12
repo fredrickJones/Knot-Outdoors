@@ -5,14 +5,13 @@ var User = require('./../models/userModel');
 
 module.exports = {
 	updateOrCreate: function(user){
-		// console.log(user);
+		console.log(user);
 		var deferred = Q.defer();
-		User.findOne({ id: user.id }, function(err, results){
+		User.findOne({ _id: user.id }, function(err, results){
 			if(err) return deferred.reject(err);
 			if(results){
 				User.update({ _id: results._id }, {
-					name: user.displayName,
-					gender: user._json.gender
+					name: user._json.name,
 				}, function(err, results){
 					if(err){
 						return deferred.reject(err);
@@ -23,10 +22,10 @@ module.exports = {
 			} else {
 				User.create({
 					provider: user.provider,
-					id: user.id,
-					name: user.displayName,
+					id: user._json.id,
+					name: user._json.name,
 					gender: user._json.gender,
-					locale: user.locale
+					locale: user._json.locale
 				}, function(err, results){
 					if(err){
 						return deferred.reject(err);
