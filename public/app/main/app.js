@@ -19,9 +19,8 @@ app.config(function($routeProvider) {
 		.when('/rock-climbing', {
 			templateUrl: './app/views/rockClimbing/rockView.html',
 			controller: 'rockCtrl',
-			resolve: {  //<--this will load points on load
-				crags: function(rockService){
-					// console.log("Hi fred");
+			resolve: {
+				crags: function(rockService) {  //<--this will load points on load
 					return rockService.getNear();
 				},
 				center: function(locationService, $q){
@@ -39,7 +38,7 @@ app.config(function($routeProvider) {
 			temlateUrl: './app/views/camping/campingView.html',
 			controller: 'campingCtrl',
 			resolve: {
-				sites: function(campService) {
+				sites: function(campService) {  //<--this will load points on load
 					return campService.getNear();
 				},
 				center: function(locationService, $q){

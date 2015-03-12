@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('campingCtrl', function($scope, campService, locationService, uiGmapGoogleMapApi, /*sites,*/ center) {  //sites & center comes from app.js
+app.controller('campingCtrl', function($scope, campService, locationService, uiGmapGoogleMapApi, sites, center) {  //sites & center comes from app.js
 	$scope.sites = sites;
 	// console.log(sites);
 	$scope.map = center;
