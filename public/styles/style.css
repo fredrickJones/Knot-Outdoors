@@ -94,9 +94,8 @@ body {
 	-o-border-radius: 75px;
 }
 
-.window-style {
-	font-size: 11px !important;
-	width: 100% !important;
+.jumbotron .title-text {
+	font-size: 11px;
 }
 
 

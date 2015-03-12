@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('knotOutdoors');
 
-app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {
+app.controller('rockCtrl', function($scope, rockService, locationService, uiGmapGoogleMapApi, crags, center) {  //crags & center comes from app.js
 	$scope.crags = crags;
 	// console.log(crags);
 	$scope.map = center;
@@ -27,8 +27,9 @@ app.controller('rockCtrl', function($scope, rockService, locationService, uiGmap
 		$scope.windowOptions.visible = false;
 	};
 	$scope.viewUserLoc = function(location) {
-		$scope.userLongitude = location.latitude;
-		$scope.userLongitude = location.longitude;
+		// console.log(location);
+		$scope.userCoordsLat = location.latitude;
+		$scope.userCoordsLon = location.longitude; //.latitude && location.longitude;
 	};
 	$scope.hideUserLoc = function() {
 		$scope.windowOptions.visible = false;

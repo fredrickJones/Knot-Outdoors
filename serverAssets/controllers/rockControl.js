@@ -5,7 +5,7 @@ module.exports = {
 	create: function(req, res){
 		var coords = [req.body.lon, req.body.lat];
 		req.body.loc = coords;
-		console.log(req.body);
+		// console.log(req.body);
 		var newCrag = new Crag(req.body);
 		newCrag.save(function(err, crag) {
 			if(err) {
@@ -17,21 +17,22 @@ module.exports = {
 		});
 	},
 	getCrags: function(req, res) {
-		// console.log(req.query);
+		console.log(req.query);
 		Crag.find({
-			coords: {
+			// loc: [-111.666271, 40.450810]
+			loc: {
 				$near: [Number(req.query.lon), Number(req.query.lat)],
-				$minDistance: 0.0,
-				$maxDistance: 0.35
+				$maxDistance: 0.724637
 			}
 		}, function(err, response) {
 				if(err) {
 					// console.log(err);
 					return res.status(500).json(err);
 				} else {
+					console.log(response);
 					res.status(200).json(response);
 				}
-		});
+		}).limit(100);
 	}
 };
 
