@@ -33,13 +33,13 @@ app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService
 		}
 	};
 
-	$scope.addNewHike = function(hikeData) {
+	$scope.addNewTrail = function(trailData) {
 		// console.log(hikeData);
 		// hikeService.addHike(hikeData);
-		if ($scope.hike_form.$valid) {
-			hikeService.addHike(hikeData);
+		if ($scope.trail_form.$valid) {
+			hikeService.addHike(trailData);
 		} else {
-			$scope.hike_form.submitted = true;
+			$scope.trail_form.submitted = true;
 			// $scope.hike.name = '';
 			// $scope.hike.loc[1] = '';
 			// $scope.hike.loc[0] = '';

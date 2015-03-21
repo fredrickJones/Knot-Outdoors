@@ -11,7 +11,8 @@ var Express = require('express'),
 var env = require('./serverAssets/env'),
 	userControl = require('./serverAssets/controllers/userControl'),
 	rockControl = require('./serverAssets/controllers/rockControl'),
-	campControl = require('./serverAssets/controllers/campControl');
+	campControl = require('./serverAssets/controllers/campControl'),
+	hikeControl = require('./serverAssets/controllers/hikeControl');
 
 var app = Express();
 var port = process.env.EXPRESS_PORT || 9099;
@@ -119,8 +120,8 @@ app.get('/api/user/:id', isAuthed, userControl.getUser);
 app.post('/api/rockClimb', isAuthed, rockControl.create);
 app.get('/api/rockClimb', rockControl.getCrags);
 
-// app.post('/api/hiking', isAuthed, rockControl.create);
-// app.get('/api/hiking', rockControl.getCrags);
+app.post('/api/hiking', isAuthed, hikeControl.create);
+app.get('/api/hiking', hikeControl.getTrails);
 
 app.post('/api/camping', isAuthed, campControl.create);
 app.get('/api/camping', campControl.getSites);

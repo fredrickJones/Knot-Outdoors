@@ -50,10 +50,9 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-left">
-						<li><a href="/#/camping">Camping</a></li>
-						<li><a href="/#/fishing">Fishing</a></li>
-						<li><a href="/#/hiking">Hiking</a></li>
-						<li><a href="/#/rock-climbing">Rock Climbing</a></li>
+						<li><a href="" ng-click="setSelection('camping')">Camping</a></li>
+						<li><a href="" ng-click="setSelection('hiking')">Hiking</a></li>
+						<li><a href="" ng-click="setSelection('rockClimbing')">Rock Climbing</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li ng-show="user"><a href="#/dashboard">Dashboard</a></li>
@@ -116,15 +115,12 @@
 <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
 
 <!-- app -->
-<script src="/app/main/app.js"></script>
+<script src="/app/app.js"></script>
 
 <!-- controllers -->
-<script src="/app/main/mainCtrl.js"></script>
-<script src="/app/views/home/homeCtrl.js"></script>
-<script src="/app/views/rockClimbing/rockCtrl.js"></script>
-<script src="/app/views/camping/campingCtrl.js"></script>
-<script src="/app/views/hiking/hikingCtrl.js"></script>
-<script src="/app/views/dashboard/dashboardCtrl.js"></script>
+<script src="/app/ctrls/mainCtrl.js"></script>
+<script src="/app/ctrls/homeCtrl.js"></script>
+<script src="/app/ctrls/dashboardCtrl.js"></script>
 
 <!-- services -->
 <script src="/app/services/dashboardService.js"></script>
@@ -133,6 +129,7 @@
 <script src="/app/services/rockService.js"></script>
 <script src="/app/services/campService.js"></script>
 <script src="/app/services/hikeService.js"></script>
+<script src="/app/services/selectionService.js"></script>
 
 </body>
 </html>

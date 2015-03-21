@@ -1,0 +1,282 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-header">
+			<h1>Add Marker</h1>			
+		</div>
+		<div class="btn-group col-md-2">
+			<button type="button" class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown" aria-expanded="false">Adventure <span class="caret"></span></button>
+			<ul class="dropdown-menu" role="menu">
+				<li data-toggle="modal" data-target="#cragModal"><a href="">rock climbing</a></li>
+				<li data-toggle="modal" data-target="#siteModal"><a href="">camping</a></li>
+				<li data-toggle="modal" data-target="#trailModal"><a href="">hicking</a></li>
+			</ul>
+		</div>
+		<p>the rock climbing form is the only one that is currently working, but the others are coming soon.</p>
+	</div>
+</div>
+
+
+
+<div id="cragModal" class="modal fade">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>add a crag</h3>
+			</div>
+			<div class="modal-body">
+				<form class="form" name="crag_form" novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>crag name</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="text" placeholder="crag name" name="name" ng-model="crag.name" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>crag lat</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="crag latitude" name="lat" ng-model="crag.lat" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>crag long</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="crag longitude" name="lon" ng-model="crag.lon" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>crag difficulty</label></span>
+							</div>
+							<div class="col-md-9">
+								<select class="form-control" placeholder="crag difficulty" name="difficult" ng-model="crag.difficult" required/>
+									<option>5.1</option>
+									<option>5.2</option>
+									<option>5.3</option>
+									<option>5.4</option>
+									<option>5.5</option>
+									<option>5.6</option>
+									<option>5.7</option>
+									<option>5.8</option>
+									<option>5.9</option>
+									<option>5.10a</option>
+									<option>5.10b</option>
+									<option>5.10c</option>
+									<option>5.10d</option>
+									<option>5.11a</option>
+									<option>5.11b</option>
+									<option>5.11c</option>
+									<option>5.11d</option>
+									<option>5.12a</option>
+									<option>5.12b</option>
+									<option>5.12c</option>
+									<option>5.12d</option>
+									<option>5.13a</option>
+									<option>5.13b</option>
+									<option>5.13c</option>
+									<option>5.13d</option>
+									<option>5.14a</option>
+									<option>5.14b</option>
+									<option>5.14c</option>
+									<option>5.14d</option>
+									<option>5.15a</option>
+									<option>5.15b</option>
+									<option>5.15c</option>
+									<option>5.15d</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>trail head?</label></span>
+							</div>
+							<div class="col-md-4">
+								<label class="radio-inline">
+									<input type="radio" name="trailHead" ng-model="crag.trailHead" value="true" ng-required="!crag.trailHead"> Yes
+								</label>
+							</div>
+							<div class="col-md-4">
+								<label class="radio-inline">
+									<input type="radio" name="trailHead" ng-model="crag.trailHead" value="false" ng-required="!crag.trailHead"> No
+								</label>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="btn btn-danger btn-block" data-dismiss="modal">Cancel</div>
+					</div>
+					<div class="col-md-6">
+						<div class="btn btn-success btn-block" ng-click="addNewCrag(crag)" ng-disabled="crag_form.$invalid" data-dismiss="modal">submit</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="siteModal" class="modal fade">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>add a site</h3>
+			</div>
+			<div class="modal-body">
+				<form class="form" name="site_form" novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>site name</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="text" placeholder="site name" name="name" ng-model="site.name" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>site price</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="site price" name="price" ng-model="site.price" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>site lat</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="site latitude" name="lat" ng-model="site.lat" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>site long</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="site longitude" name="lon" ng-model="site.lon" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>trail head?</label></span>
+							</div>
+							<div class="col-md-4">
+								<label class="radio-inline">
+									<input type="radio" name="trailHead" ng-model="site.trailHead" value="true" ng-required="!site.trailHead"> Yes
+								</label>
+							</div>
+							<div class="col-md-4">
+								<label class="radio-inline">
+									<input type="radio" name="trailHead" ng-model="site.trailHead" value="false" ng-required="!site.trailHead"> No
+								</label>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="btn btn-danger btn-block" data-dismiss="modal">cancel</div>
+					</div>
+					<div class="col-md-6">
+						<div class="btn btn-success btn-block" ng-click="addNewSite(site)" ng-disabled="site_form.$invalid" data-dismiss="modal">submit</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="trailModal" class="modal fade">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>add a trail</h3>
+			</div>
+			<div class="modal-body">
+				<form class="form" name="trail_form" novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>trail name</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="text" placeholder="trail name" name="name" ng-model="trail.name" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>trail lat</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="trail latitude" name="lat" ng-model="trail.lat" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="required"><label>trail long</label></span>
+							</div>
+							<div class="col-md-9">
+								<input class="btn-block" type="number" placeholder="trail longitude" name="lon" ng-model="trail.lon" ng-focus required />
+							</div>
+						</div>
+					</div>
+					<div class="input-group">
+						<div class="row">
+							<div class="col-md-3">
+								<label>trail distance <span class="required">*</span></label>
+							</div>
+							<div class="col-md-9">
+								<input type="number" placeholder="trail distance in miles" name="distance" ng-model="trail.distance" ng-focus required />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="btn btn-danger btn-block" data-dismiss="modal">cancel</div>
+					</div>
+					<div class="col-md-6">
+						<div class="btn btn-success btn-block" ng-click="addNewTrail(trail)" ng-disabled="trail_form.$invalid" data-dismiss="modal">submit</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
