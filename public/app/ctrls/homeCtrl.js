@@ -12,12 +12,15 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 		switch(selection) {
 			case 'camping':
 				$scope.adventures = sites;
+				console.log($scope.adventures);
 				break;
 			case 'rockClimbing':
 				$scope.adventures = crags;
+				console.log($scope.adventures);
 				break;
 			case 'hiking':
 				$scope.adventures = trails;
+				console.log($scope.adventures);
 				break;
 			default:
 				$scope.adventures = [];
@@ -41,24 +44,12 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 
 
 // MAP STUFF
-	$scope.map = center;
-
-	$scope.windowOptions = {
-		show: false
-	};
-	$scope.onClick = function() {
-		$scope.windowOptions.show = !$scope.windowOptions.show;
-	};
-	$scope.closeClick = function() {
-		$scope.windowOptions.show = false;
-	};
-
 	$scope.map = {
 		center: center,
 		zoom: 10,
 		bounds: {}
 	};
-	$scope.map.options = {
+	$scope.map.option = {
 		scrollwheel: false,
 		mapTypeControlOptions: {
 			mapTypeIds: [google.maps.MapTypeId.TERRAIN]
@@ -78,6 +69,17 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 	$scope.cluster = {
 		maxZoom: 14
 	};
+
+	$scope.windowOptions = {
+		show: false
+	};
+	$scope.onClick = function() {
+		$scope.windowOptions.show = !$scope.windowOptions.show;
+	};
+	$scope.closeClick = function() {
+		$scope.windowOptions.show = false;
+	};
+
 
 	$scope.showWeather = true;
 	$scope.weatherOptions = {
