@@ -7,6 +7,17 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 	$scope.adventures = [];
 	console.log($scope.adventures);
 
+	$scope.windowOptions = {
+		show: false
+	};
+	$scope.onClick = function() {
+		$scope.windowOptions.show = !$scope.windowOptions.show;
+	};
+	$scope.closeClick = function() {
+		$scope.windowOptions.show = false;
+	};
+	$scope.title = 'name of item';
+
 	$scope.$on('updateSelection', function() {
 		var selection = selectionService.getSelection();
 		switch(selection) {
@@ -23,7 +34,7 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 				console.log($scope.adventures);
 				break;
 			default:
-				$scope.adventures = [];
+				$scope.adventures = sites;
 				break;
 		};
 	});
@@ -39,8 +50,7 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 		url: 'images/user-marker.png'
 	};
 
-	$scope.userCoordsLat = $scope.userPin.coords.latitude.toFixed(6);
-	$scope.userCoordsLon = $scope.userPin.coords.longitude.toFixed(6);
+	$scope.userTitle = $scope.userPin.coords.latitude.toFixed(6) + ', ' + $scope.userPin.coords.longitude.toFixed(6);
 
 
 // MAP STUFF
@@ -69,17 +79,6 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 	$scope.cluster = {
 		maxZoom: 14
 	};
-
-	$scope.windowOptions = {
-		show: false
-	};
-	$scope.onClick = function() {
-		$scope.windowOptions.show = !$scope.windowOptions.show;
-	};
-	$scope.closeClick = function() {
-		$scope.windowOptions.show = false;
-	};
-
 
 	$scope.showWeather = true;
 	$scope.weatherOptions = {

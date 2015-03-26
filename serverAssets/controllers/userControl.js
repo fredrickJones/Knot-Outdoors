@@ -1,16 +1,15 @@
 'use strict';
 var Q = require('q');
-
 var User = require('./../models/userModel');
 
 module.exports = {
 	updateOrCreate: function(user){
 		console.log(user);
 		var deferred = Q.defer();
-		User.findOne({ _id: user.id }, function(err, results){
+		User.findOne({ id: user.id }, function(err, results){
 			if(err) return deferred.reject(err);
 			if(results){
-				User.update({ _id: results._id }, {
+				User.update({ id: results.id }, {
 					name: user._json.name,
 				}, function(err, results){
 					if(err){

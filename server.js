@@ -35,7 +35,7 @@ Passport.use(new FacebookStrategy({
 	clientID: process.env.FACEBOOK_ID || env.FACEBOOK.APP_ID,
 	clientSecret: process.env.FACEBOOK_SECRET || env.FACEBOOK.APP_SECRET,
 	callbackURL: process.env.FACEBOOK_CB || "http://localhost:9099/auth/facebook/callback"
-	}, function(token, refreshToken, profile, done) {
+	}, function(accessToken, refreshToken, profile, done) {
 		userControl.updateOrCreate(profile).then(function(results) {
 			done(null, profile);
 		}, function(err) {
@@ -47,9 +47,9 @@ app.get('/auth/facebook', Passport.authenticate('facebook'), function(req, res) 
 	return res.status(200).end();
 });
 app.get('/auth/facebook/callback', Passport.authenticate('facebook', {
-	failureRedirect: '/'}), function(req, res) {
-	res.redirect('/#/dashboard')	// <--Successful authentication, redirect to dashboard.
-});
+	successRedirect: '/#/dashboard',	// <--Successful authentication, redirect to dashboard.
+	failureRedirect: '/'
+}));
 
 	// INSTAGRAM
 Passport.use(new InstagramStrategy({

@@ -5,7 +5,7 @@ app.service('authService', function($http) {
 	var user = {};
 
 	this.updateUser = function(){
-		$http.get('/auth/me').then(function(res) {
+		$http.get('/auth/user/:id').then(function(res) {
 			user = res.data;
 			// console.log(user);
 			return user;
