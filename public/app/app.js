@@ -36,50 +36,6 @@ app.config(function($routeProvider) {
 				}
 			}
 		})
-		// .when('/rock-climbing', {
-		// 	templateUrl: './app/views/rockView.html',
-		// 	controller: 'rockCtrl',
-		// 	resolve: {
-		// 		crags: function(rockService) {  //<--this will load points on load
-		// 			return rockService.getNear();
-		// 		},
-		// 		center: function(locationService, $q){
-		// 			var deferred = $q.defer()
-		// 			locationService.getCoords().then(function(coords){
-		// 				coords.latitude = coords.lat;
-		// 				coords.longitude = coords.lon;
-		// 				deferred.resolve(coords);
-		// 			})
-		// 			return deferred.promise;
-		// 		}
-		// 	}
-		// })
-		// .when('/camping', {
-		// 	temlateUrl: './app/views/camping/campingView.html',
-		// 	controller: 'campingCtrl',
-		// 	resolve: {
-		// 		sites: function(campService) {  //<--this will load points on load
-		// 			return campService.getNear();
-		// 		},
-		// 		center: function(locationService, $q){
-		// 			var deferred = $q.defer()
-		// 			locationService.getCoords().then(function(coords){
-		// 				coords.latitude = coords.lat;
-		// 				coords.longitude = coords.lon;
-		// 				deferred.resolve(coords);
-		// 			})
-		// 			return deferred.promise;
-		// 		}
-		// 	}
-		// })
-		// .when('/hiking', {
-		// 	temlateUrl: '/temlate/hiking.html',
-		// 	controller: 'hikingCtrl'
-		// })
-		// .when('/fishing', {
-		// 	temlateUrl: '/temlate/fishing.html',
-		// 	controller: 'fishingCtrl'
-		// })
 		.otherwise({
 			redirectTo: '/'
 		});

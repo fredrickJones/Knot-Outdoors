@@ -48,23 +48,4 @@ app.controller('dashboardCtrl', function($scope, uiGmapGoogleMapApi, rockService
 	};
 });
 
-// app.directive('ngFocus', [function() {
-// 	var FOCUS_CLASS = 'ng-focused';
-// 	return {
-// 		restrict: 'A',
-// 		require: 'ngModel',
-// 		link: function(scope, ele, attrs, ctrl) {
-// 			ctrl.$focused = false;
-// 			ele.bind('focus', function(evt) {
-// 				ele.addClass(FOCUS_CLASS);
-// 				scope.$apply(function() {ctrl.$focused = true});
-// 			}).bind('blur', function(evt) {
-// 				ele.removeClass(FOCUS_CLASS);
-// 				scope.$apply(function() {ctrl.$focused = false});
-
-// 			});
-// 		}
-// 	}
-// }]);
-
 

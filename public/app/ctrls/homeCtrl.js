@@ -16,7 +16,7 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 	$scope.closeClick = function() {
 		$scope.windowOptions.show = false;
 	};
-	$scope.title = 'name of item';
+	$scope.title = 'name of item ' + $scope.adventures.name;
 
 	$scope.$on('updateSelection', function() {
 		var selection = selectionService.getSelection();
@@ -34,7 +34,8 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 				console.log($scope.adventures);
 				break;
 			default:
-				$scope.adventures = sites;
+				$scope.adventures = sites && crags && trails;
+				console.log($scope.adventures);
 				break;
 		};
 	});
