@@ -5,7 +5,7 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 
 // MARKER STUFF
 	$scope.adventures = [];
-	console.log($scope.adventures);
+	// console.log($scope.adventures);
 
 	$scope.windowOptions = {
 		show: false
@@ -16,26 +16,27 @@ app.controller('homeCtrl', function($scope, loginService, locationService, selec
 	$scope.closeClick = function() {
 		$scope.windowOptions.show = false;
 	};
-	$scope.title = 'name of item ' + $scope.adventures.name;
 
 	$scope.$on('updateSelection', function() {
 		var selection = selectionService.getSelection();
 		switch(selection) {
 			case 'camping':
 				$scope.adventures = sites;
-				console.log($scope.adventures);
+				// $scope.title = sites.name;
+				// console.log($scope.adventures);
 				break;
 			case 'rockClimbing':
 				$scope.adventures = crags;
-				console.log($scope.adventures);
+				// $scope.title = crags.name;
+				// console.log($scope.adventures);
 				break;
 			case 'hiking':
 				$scope.adventures = trails;
-				console.log($scope.adventures);
+				// console.log($scope.adventures);
 				break;
 			default:
-				$scope.adventures = sites && crags && trails;
-				console.log($scope.adventures);
+				$scope.adventures = sites + crags + trails;
+				// console.log($scope.adventures);
 				break;
 		};
 	});
